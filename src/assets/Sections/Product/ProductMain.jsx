@@ -41,6 +41,14 @@ export default function ProductMain() {
                 );
               })}
           </div>
+
+          <div className={Style.productContent} >
+            <div className={Style.contentHeader}>
+                <span className={Style.productName}>{product.title}</span>
+                <span className={Style.productPrice}>{product.price.amount} {product.price.currencyCode}</span>
+            </div>
+
+          </div>
         </section>
       </>
     );

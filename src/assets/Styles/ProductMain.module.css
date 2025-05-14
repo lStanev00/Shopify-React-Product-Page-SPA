@@ -1,35 +1,65 @@
 .productMain {
-  display: grid; 
-  grid-template-columns: 50% 50%; 
-  grid-template-rows: max-content; 
-  gap: 0px 0px; 
-  grid-template-areas: 
-    ". ."; 
-    
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: max-content;
+  gap: 0px 0px;
+  grid-template-areas: ". .";
+  width: 100%;
 }
 
 .imagesDiv {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    max-width: 783px;
-    height: fit-content;
-    gap: 20px;
-    flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  max-width: 783px;
+  height: fit-content;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 .mainImage {
-    height: fit-content;
-    width: fit-content;
-    padding: 20px;
-    gap: 10px;
+  height: fit-content;
+  width: fit-content;
+  padding: 20px;
+  gap: 10px;
 }
 
 .mainImage img {
-    max-width: 743px;
-    max-height: 680px;
+  max-width: 743px;
+  max-height: 680px;
 }
 
 .listedImage {
-    width: 166px;
-    height: 166px;
+  width: 166px;
+  height: 166px;
+}
+
+.productContent {
+  display: flex;
+  flex-direction: column;
+  width: 523px;
+  height: fit-content;
+  padding: 0;
+  gap: 32px;
+  color: #000000;
+}
+
+.contentHeader {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: fit-content;
+  gap: 8px;
+}
+
+.productName {
+  font-family: Montserrat;
+  font-weight: 400;
+  font-size: 34px;
+  width: 100%;
+  height: fit-content;
+}
+
+.productPrice {
+  height: fit-content;
+  width: 390px;
 }
