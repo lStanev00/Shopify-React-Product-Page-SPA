@@ -7,9 +7,14 @@ export default function ProductMain() {
   const [mainImage, setMainImage] = useState(product?.media[0]);
   const [imageList, setImageList] = useState(undefined);
 
-  useEffect(() => {
-    if (product) setImageList(product?.media);
-  }, [product]);
+  useEffect(() => {if (product) setImageList(product?.media)}, [product]);
+
+  const handleImageListClick = (e) => {
+    const element = e.target;
+    const href = element.src;
+
+    return setMainImage(href);
+  }
 
   if (product) {
     return (
@@ -31,6 +36,7 @@ export default function ProductMain() {
                     src={imgHref}
                     alt={"image " + imageList.indexOf(imgHref)}
                     key={imageList.indexOf(imgHref)}
+                    onClick={(e) => handleImageListClick(e)}
                   />
                 );
               })}
