@@ -19,10 +19,10 @@
     gap: 10px;
 }
 
-/* .mainImage img {
-    width: 743px;
-    height: fit-content;
-} */
+.mainImage img {
+    max-width: 743px;
+    max-height: 680px;
+}
 
 .listedImage {
     width: 166px;
