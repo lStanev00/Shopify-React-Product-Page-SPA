@@ -6,6 +6,7 @@
   grid-template-areas: ". .";
   width: 100%;
   margin-top: 60px;
+  justify-items: center;
 }
 
 .imagesDiv {
