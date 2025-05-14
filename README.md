@@ -27,8 +27,6 @@ This project is a React-based review widget for Shopify product pages.
 
 - **React**
 - **Vite** 
-<!-- - **Tailwind CSS** (for styling)
-- **Axios** (for API communication)
-- **FingerprintJS** (for anonymous session handling) -->
+- **FingerprintJS** (for anonymous session handling)
 - **Express Backend** (external — see [backend repo](https://github.com/lStanev00/Shopify-REST-Api-Demo))
 
