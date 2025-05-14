@@ -1,5 +1,6 @@
 import { useContext, useEffect } from "react";
 import { ContextVariables } from "./assets/context-variables/ContextVariables";
+import ProductMain from "./assets/Sections/Product/ProductMain";
 
 export default  function AppContent() {
   const { product, setProduct, fetchProduct } = useContext(ContextVariables);
@@ -15,7 +16,7 @@ export default  function AppContent() {
   if (product) {
     return (
       <>
-        <img src={product.media[0]} alt={product.slug} />
+        <ProductMain />
       </>
     );
   }
