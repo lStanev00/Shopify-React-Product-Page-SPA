@@ -34,8 +34,8 @@
 }
 
 .listedImage:hover {
-    cursor: pointer;
-    scale: 1.01;
+  cursor: pointer;
+  scale: 1.01;
 }
 
 .productContent {
@@ -67,33 +67,76 @@
 .productPrice {
   height: fit-content;
   width: 390px;
+  font-family: Montserrat;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 140%;
+  letter-spacing: 0%;
 }
 
 .productDescriptionContent {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: fit-content;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: fit-content;
+  gap: 10px;
 }
 
 .contentReviews {
-    display: flex;
-    flex-direction: row;
-    width: fit-content;
-    height: fit-content;
-    gap: 3px;
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  height: fit-content;
+  gap: 3px;
 }
 
 .startsDiv {
-    display: flex;
-    flex-direction: row;
-    gap: 1px;
-    width: fit-content;
-    height: fit-content;
+  display: flex;
+  flex-direction: row;
+  gap: 1px;
+  width: fit-content;
+  height: fit-content;
 }
 
 .starDiv {
-    width: 20px;
-    height: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.reviewCount {
+  font-family: Montserrat;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  letter-spacing: 0%;
+  text-align: center;
+  width: fit-content;
+  height: fit-content;
+}
+
+.productDescription {
+  font-family: Montserrat;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 135%;
+  letter-spacing: 0%;
+  width: 523px;
+  height: 154px;
+  transition: background-color 0.3s ease;
+}
+
+.addToCartButton {
+  background: #9f3419;
+  border: none;
+  border-radius: 9999px;
+  width: 100%;
+  height: 52px;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 24px;
+  color: #ccc;
+}
+
+.addToCartButton:hover {
+  background-color: #7b241c;
 }

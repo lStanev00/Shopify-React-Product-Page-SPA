@@ -67,7 +67,10 @@ export default function ProductMain() {
                     </div>
                     <div className={Style.reviewCounts}>{rating} ( {reviewsCount} reviews )</div>
                 </div>
+                <p className={Style.productDescription}>{product.description}</p>
             </div>
+
+            <button id="#ProductSubmitButton-template--24968587608408__main" className={Style.addToCartButton}>ADD TO CART</button>
 
           </div>
         </section>
