@@ -33,6 +33,11 @@
   height: 166px;
 }
 
+.listedImage:hover {
+    cursor: pointer;
+    scale: 1.01;
+}
+
 .productContent {
   display: flex;
   flex-direction: column;
@@ -62,4 +67,33 @@
 .productPrice {
   height: fit-content;
   width: 390px;
+}
+
+.productDescriptionContent {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+    gap: 10px;
+}
+
+.contentReviews {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    height: fit-content;
+    gap: 3px;
+}
+
+.startsDiv {
+    display: flex;
+    flex-direction: row;
+    gap: 1px;
+    width: fit-content;
+    height: fit-content;
+}
+
+.starDiv {
+    width: 20px;
+    height: 20px;
 }
