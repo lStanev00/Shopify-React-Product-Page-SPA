@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import { ContextVariables } from "./assets/context-variables/ContextVariables";
 import ProductMain from "./assets/Sections/Product/ProductMain";
 import "./assets/Styles/Main.css";
+import { getVisitorId } from "./assets/helpers/getVisitorId";
 
 export default function AppContent() {
   const { product, setProduct, fetchProduct } = useContext(ContextVariables);
@@ -13,6 +14,8 @@ export default function AppContent() {
       setProduct(data);
     }
     loadProduct();
+    getVisitorId();
+
   }, []);
 
   if (product) {
