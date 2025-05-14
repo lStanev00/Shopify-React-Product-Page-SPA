@@ -1,16 +1,21 @@
 .productMain {
-    display: flex;
-    width: 100%;
-    height: fit-content;
+  display: grid; 
+  grid-template-columns: 50% 50%; 
+  grid-template-rows: max-content; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    ". ."; 
+    
 }
 
 .imagesDiv {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
-    width: fit-content;
+    max-width: 783px;
     height: fit-content;
     gap: 20px;
+    flex-wrap: wrap;
 }
 .mainImage {
     height: fit-content;
