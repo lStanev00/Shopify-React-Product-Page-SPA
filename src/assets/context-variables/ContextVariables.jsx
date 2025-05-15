@@ -8,8 +8,6 @@ export const ContextProvider = ({children}) => {
 
     async function fetchProduct(productSlug) {
         const endpoint = url + `/product/` + productSlug;
-        console.log(endpoint)
-
         const res = await fetch(endpoint);
 
         if (!res.ok) return null;
