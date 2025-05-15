@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { ContextVariables } from "../context-variables/ContextVariables";
 import Style from "../Styles/ReviewsMain.module.css";
 import { StarsDiv } from "./ProductMain";
+import ReviewBreakdown from "../Components/ReviewBreakdown";
 
 export default function ReviewsMain () {
     const { product, paginatedData, setPaginatedData } = useContext(ContextVariables);
@@ -22,6 +23,10 @@ export default function ReviewsMain () {
 
                                 <div className={Style.reviewsCount}>Based on {product.reviews.length} reviews</div>
 
+                            </div>
+
+                            <div className={Style.reviewBrakedown}>
+                                <ReviewBreakdown reviews={product.reviews} />
                             </div>
                         </div>
                     </div>

@@ -67,3 +67,11 @@
   text-align: center;
   color: #7c7e7c;
 }
+
+.reviewbrakedown {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: fit-content;
+    height: fit-content;
+}
