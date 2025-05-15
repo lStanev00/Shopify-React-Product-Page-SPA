@@ -58,16 +58,7 @@ export default function ProductMain() {
 
             <div className={Style.productDescriptionContent}>
               <div className={Style.contentReviews}>
-                <div className="starsDiv">
-                  {starCount &&
-                    [...Array(starCount)].map((dummy, i) => {
-                      return (
-                        <div className="starDiv" key={`star${i}`}>
-                          <svg.EmptyStar />
-                        </div>
-                      );
-                    })}
-                </div>
+                <StarsDiv />
                 <div className={Style.reviewCounts}>
                   {rating} ( {reviewsCount} reviews )
                 </div>
@@ -88,15 +79,23 @@ export default function ProductMain() {
   }
 }
 
-export function StarRatingCount() {
+export function StarsDiv() {
   const {product} = useContext(ContextVariables);
-  
-
+  const [fullStars, setFullStars] = useState([...Array(Math.floor(product.avarageReviewsRate))]);
+  const [emptyStars, setEmptyStars] = useState([...Array(5 - Math.floor(product.avarageReviewsRate))]);
 
   return (
     <div className="starsDiv">
-      {starCount &&
-        [...Array(starCount)].map((dummy, i) => {
+      {fullStars && fullStars.length> 0 &&
+        fullStars.map((dummy, i) => {
+          return (
+            <div className="starDiv" key={`star${i}`}>
+              <svg.FullStar />
+            </div>
+          );
+        })}
+      {emptyStars && emptyStars.length> 0 &&
+        emptyStars.map((dummy, i) => {
           return (
             <div className="starDiv" key={`star${i}`}>
               <svg.EmptyStar />
