@@ -1,0 +1,10 @@
+select {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.span {
+    font-weight: normal;
+    font-size: 14px;
+}

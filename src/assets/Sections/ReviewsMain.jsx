@@ -1,11 +1,13 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ContextVariables } from "../context-variables/ContextVariables";
 import Style from "../Styles/ReviewsMain.module.css";
 import { StarsDiv } from "./ProductMain";
 import ReviewBreakdown from "../Components/ReviewBreakdown";
+import { SortDropdown } from "../Components/SortDropdown";
 
 export default function ReviewsMain () {
     const { product, paginatedData, setPaginatedData } = useContext(ContextVariables);
+    const [sortBy, setSortBy] = useState("highest");
 
     if (paginatedData) {
         return(
@@ -31,6 +33,10 @@ export default function ReviewsMain () {
 
                             <button className={Style.openReview}>Leave a review</button>
                         </div>
+                    </div>
+                    <div className={Style.commentsDiv}>
+                        <SortDropdown value={sortBy} onChange={setSortBy} />
+
                     </div>
                 </section>
             </>
