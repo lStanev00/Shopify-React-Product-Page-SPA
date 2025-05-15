@@ -1,5 +1,4 @@
 import { createContext, useEffect, useState } from "react";
-import { paginateReviews } from "../helpers/paginateReviews";
 
 export const ContextVariables = createContext();
 
