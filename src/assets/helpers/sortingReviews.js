@@ -1,7 +1,6 @@
 import { paginateReviews } from "./paginateReviews.js";
 
 export function sortOneToFive(array) {
-console.log(array)
 
   array = array.sort((a, b) => a.rating - b.rating);
   array = paginateReviews(array);
@@ -9,7 +8,6 @@ console.log(array)
 }
 
 export function filterHaveMedia(array) {
-console.log(array)
   try {
     array = (array || []).filter((entry) => entry?.media?.length > 0);
 
