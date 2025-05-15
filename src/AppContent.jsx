@@ -5,9 +5,10 @@ import "./assets/Styles/Main.css";
 import { getVisitorId } from "./assets/helpers/getVisitorId";
 import { paginateReviews } from "./assets/helpers/paginateReviews.js";
 import ReviewsMain from "./assets/Sections/ReviewsMain.jsx";
+import ReviewModal from "./assets/Components/ReviewModal.jsx";
 
 export default function AppContent() {
-  const { product, fetchProduct, setPaginatedData, setVisitorId } = useContext(ContextVariables);
+  const { product, fetchProduct, setPaginatedData, setVisitorId, modalTrigger } = useContext(ContextVariables);
 
   useEffect(() => {
     async function loadProduct() {
@@ -27,6 +28,10 @@ export default function AppContent() {
       <div className="container">
         <ProductMain />
         <ReviewsMain />
+        {modalTrigger && (
+          <div className="backdrop"><ReviewModal /></div>
+        )}
+        
       </div>
     );
   }

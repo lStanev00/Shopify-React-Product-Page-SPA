@@ -19,7 +19,8 @@ export default function ReviewsMain() {
         setPaginatedData,
         reviews,
         fetchProduct,
-        visitorId
+        visitorId,
+        setTrigger
     } = useContext(ContextVariables);
 
     const [sortBy, setSortBy] = useState("highest");
@@ -72,7 +73,7 @@ export default function ReviewsMain() {
                                 <ReviewBreakdown review={reviews} />
                             </div>
 
-                            <button className={Style.openReview}>Leave a review</button>
+                            <button onClick={(e) => {setTrigger(true)}} className={Style.openReview}>Leave a review</button>
                         </div>
                     </div>
 

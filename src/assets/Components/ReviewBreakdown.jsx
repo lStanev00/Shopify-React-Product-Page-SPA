@@ -1,7 +1,10 @@
 import { svg } from "./svgs";
 import Style from "../Styles/ReviewBrakedown.module.css"
+import { useContext } from "react";
+import { ContextVariables } from "../context-variables/ContextVariables";
 
-export function ReviewBreakdown({ reviews = [] }) {
+export function ReviewBreakdown() {
+    const {reviews} = useContext(ContextVariables);
     const totalReviews = reviews.length;
 
     const ratingCounts = {

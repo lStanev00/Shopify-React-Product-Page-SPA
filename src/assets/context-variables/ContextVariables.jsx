@@ -10,6 +10,7 @@ export const ContextProvider = ({children}) => {
     const [reviews, setReviews] = useState(undefined);
     const [visitorId, setVisitorId] = useState(undefined);
     const [paginatedData, setPaginatedData] = useState(undefined);
+    const [modalTrigger, setTrigger] = useState(false);
 
     useEffect(() => {
         if (product && product.reviews && product.reviews.length > 0){
@@ -39,7 +40,7 @@ export const ContextProvider = ({children}) => {
     }
 
     return (
-        <ContextVariables.Provider value={{product, setProduct, reviews, fetchProduct, paginatedData, setPaginatedData, visitorId, setVisitorId, url }}>
+        <ContextVariables.Provider value={{product, setProduct, reviews, fetchProduct, paginatedData, setPaginatedData, visitorId, setVisitorId, url, modalTrigger, setTrigger }}>
             {children}
         </ContextVariables.Provider>
     )

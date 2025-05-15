@@ -32,3 +32,14 @@
   left: 18.8%;
   top: 224px;
 }
+
+.backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.3); 
+    backdrop-filter: blur(4px);           
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;                         
+}
