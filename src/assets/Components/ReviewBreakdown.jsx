@@ -43,7 +43,7 @@ export function ReviewBreakdown({ reviews = [] }) {
                     </span>
                     <div className={Style.barWrapper}>
                         <div className={Style.barMain} >{"\u00A0"}</div>
-                        <div className={Style.bar} style={{ width: `${percent}%` }}>{"\u00A0"}</div>
+                        <div className={Style.barLoader} style={{ width: `${percent}%` }}>{"\u00A0"}</div>
                     </div>
                     <span className={Style.count}>{count}</span>
                 </div>

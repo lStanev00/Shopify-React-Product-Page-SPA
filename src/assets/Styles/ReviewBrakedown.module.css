@@ -1,0 +1,41 @@
+.row {
+  display: flex;
+  flex-direction: row;
+  gap: 16.8px;
+  width: fit-content;
+  height: fit-content;
+  justify-content: center;
+  align-items: center;
+}
+
+.stars {
+  display: flex;
+  flex-direction: row;
+  gap: 1px;
+  width: fit-content;
+  height: fit-content;
+}
+
+.barWrapper {
+  height: 4px;
+  width: 142.8px;
+  position: relative;
+  display: flex;
+}
+
+.barMain {
+  height: 4px;
+  width: 142.8px;
+  background: #cbc8c9;
+  border: none;
+  border-radius: 9999px;
+}
+
+.barLoader {
+  height: 4px;
+  width: 142.8px;
+  position: absolute;
+  background: #9f3419;
+  border: none;
+  border-radius: 9999px;
+}
