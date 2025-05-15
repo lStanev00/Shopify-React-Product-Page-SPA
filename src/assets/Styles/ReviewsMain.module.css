@@ -202,10 +202,11 @@
 .reviewUserAction {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   height: fit-content;
   width: 755px;
   gap: 22px;
+  justify-content: flex-end;
 }
 
 .wasThatHelpfull {
