@@ -107,7 +107,55 @@ export default function ReviewsMain() {
                                                 {visitorId &&
                                                     (() => {
                                                         const exist = review.votes[visitorId];
-                                                        return <>{/* your JSX here */}</>;
+                                                        if (exist) {
+                                                            if (exist == `like`) {
+                                                                return (
+                                                                    <>
+                                                                        <div
+                                                                            className={Style.likes}>
+                                                                            <svg.Liked />
+                                                                        </div>
+                                                                        <div
+                                                                            className={
+                                                                                Style.dieslikes
+                                                                            }>
+                                                                            <svg.Dislike />
+                                                                        </div>
+                                                                    </>
+                                                                );
+                                                            } else if (exist == "dislike") {
+                                                                return (
+                                                                    <>
+                                                                        <div
+                                                                            className={Style.likes}>
+                                                                            <svg.Like />
+                                                                        </div>
+                                                                        <div
+                                                                            className={
+                                                                                Style.dieslikes
+                                                                            }>
+                                                                            <svg.Disliked />
+                                                                        </div>
+                                                                    </>
+                                                                );
+                                                            } else {
+                                                                return (
+                                                                    <>
+                                                                        <div
+                                                                            className={Style.likes}>
+                                                                            <svg.Like />
+                                                                        </div>
+                                                                        <div
+                                                                            className={
+                                                                                Style.dieslikes
+                                                                            }>
+                                                                            <svg.Dislike />
+                                                                        </div>
+                                                                    </>
+                                                                );
+                                                            }
+                                                        }
+                                                        return <></>;
                                                     })()}
 
                                                 <div className={Style.likes}>
