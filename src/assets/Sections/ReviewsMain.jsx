@@ -30,6 +30,7 @@ export default function ReviewsMain() {
     useEffect(() => {
         if (paginatedData) {
             setPageCount(paginatedData.length);
+            setCurrentPageIndex((now) => {return 0})
             setCurrentPage(paginatedData[currentPageIndex]);
         }
     }, [paginatedData]);
@@ -50,8 +51,7 @@ export default function ReviewsMain() {
         else if (sortBy === "helpful") setPaginatedData(fiterUsefullReviews(reviews));
     }, [sortBy]);
 
-
-    if (paginatedData && currentPage && visitorId) {
+    if (paginatedData && visitorId) {
         return (
             <>
                 <section className={Style.mainSection}>
@@ -84,49 +84,53 @@ export default function ReviewsMain() {
                         onChange={setSortBy}
                     />
 
-                    <div className={Style.commentsDiv}>
-                        {currentPage.map((review) => {
-                            return (
-                                <div className={Style.reviewMainWrapper} key={review._id}>
-                                    <div className={Style.suberInfo}>
-                                        <StarsDiv item={review} />
-                                        <span className={Style.suberName}>{review.name}</span>
-                                        <span className={Style.reviewDate}>
-                                            {formatLocalDateTime(review.createdAt)}
-                                        </span>
-                                    </div>
-
-                                    <div className={Style.reviewInfoWrapper}>
-                                        <span className={Style.reviewTitle}>{review.title}</span>
-                                        <span className={Style.reviewDescriptin}>
-                                            {review.content}
-                                        </span>
-
-                                        {review.media.length > 0 && (
-                                            <div className={Style.reviewImageWrapper}>
-                                                {review.media.map((href) => (
-                                                    <img
-                                                        className={Style.reviewImage}
-                                                        key={href}
-                                                        src={href}
-                                                        alt="Reveiw Image"
-                                                    />
-                                                ))}
+                    {currentPage && (
+                        <>
+                            <div className={Style.commentsDiv}>
+                                {currentPage.map((review) => {
+                                    return (
+                                        <div className={Style.reviewMainWrapper} key={review._id}>
+                                            <div className={Style.suberInfo}>
+                                                <StarsDiv item={review} />
+                                                <span className={Style.suberName}>{review.name}</span>
+                                                <span className={Style.reviewDate}>
+                                                    {formatLocalDateTime(review.createdAt)}
+                                                </span>
                                             </div>
-                                        )}
 
-                                        <div className={Style.reviewUserAction}>
-                                            <span className={Style.wasThatHelpfull}>
-                                                Was this helpful?
-                                            </span>
-                                            <RenderVotes review={review} />
+                                            <div className={Style.reviewInfoWrapper}>
+                                                <span className={Style.reviewTitle}>{review.title}</span>
+                                                <span className={Style.reviewDescriptin}>
+                                                    {review.content}
+                                                </span>
+
+                                                {review.media.length > 0 && (
+                                                    <div className={Style.reviewImageWrapper}>
+                                                        {review.media.map((href) => (
+                                                            <img
+                                                                className={Style.reviewImage}
+                                                                key={href}
+                                                                src={href}
+                                                                alt="Reveiw Image"
+                                                            />
+                                                        ))}
+                                                    </div>
+                                                )}
+
+                                                <div className={Style.reviewUserAction}>
+                                                    <span className={Style.wasThatHelpfull}>
+                                                        Was this helpful?
+                                                    </span>
+                                                    <RenderVotes review={review} />
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            );
-                        })}
-                    </div>
-                    <Pagination paginatedData={paginatedData} setCurrentPageIndex={setCurrentPageIndex} currentPage={currentPage} />
+                                    );
+                                })}
+                            </div>
+                            <Pagination paginatedData={paginatedData} setCurrentPageIndex={setCurrentPageIndex} currentPage={currentPage} />
+                        </>
+                    )}
                 </section>
             </>
         );
