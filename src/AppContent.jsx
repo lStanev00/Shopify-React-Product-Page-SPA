@@ -7,7 +7,7 @@ import { paginateReviews } from "./assets/helpers/paginateReviews.js";
 import ReviewsMain from "./assets/Sections/ReviewsMain.jsx";
 
 export default function AppContent() {
-  const { product, setProduct, fetchProduct, setPaginatedData, fetchReviews } = useContext(ContextVariables);
+  const { product, fetchProduct, setPaginatedData, setVisitorId } = useContext(ContextVariables);
 
   useEffect(() => {
     async function loadProduct() {
@@ -17,8 +17,7 @@ export default function AppContent() {
     }
 
     loadProduct();
-    getVisitorId();
-
+    setVisitorId(getVisitorId());
   }, []);
 
 
