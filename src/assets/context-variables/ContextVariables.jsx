@@ -20,7 +20,7 @@ export const ContextProvider = ({children}) => {
     }
 
     return (
-        <ContextVariables.Provider value={{product, setProduct, fetchProduct,paginatedData, setPaginatedData }}>
+        <ContextVariables.Provider value={{product, setProduct, fetchProduct, paginatedData, setPaginatedData }}>
             {children}
         </ContextVariables.Provider>
     )
