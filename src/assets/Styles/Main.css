@@ -26,3 +26,9 @@
   align-items: center;
   justify-content: center;
 }
+
+.SortDropdown {
+  position: absolute;
+  left: 16%;
+  top: 224px;
+}

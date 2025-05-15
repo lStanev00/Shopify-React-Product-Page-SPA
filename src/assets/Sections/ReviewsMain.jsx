@@ -34,8 +34,9 @@ export default function ReviewsMain () {
                             <button className={Style.openReview}>Leave a review</button>
                         </div>
                     </div>
+
+                        <SortDropdown className={Style.SortDropdown} value={sortBy} onChange={setSortBy} />
                     <div className={Style.commentsDiv}>
-                        <SortDropdown value={sortBy} onChange={setSortBy} />
 
                     </div>
                 </section>

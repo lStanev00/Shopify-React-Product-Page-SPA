@@ -1,7 +1,7 @@
 import Style from "../Styles/SortDropdown.module.css"
 export function SortDropdown({ value, onChange }) {
     return (
-        <label>
+        <label className="SortDropdown">
             <b>Sort by:&nbsp;</b>
             
             <select value={value} onChange={(e) => onChange(e.target.value)}>

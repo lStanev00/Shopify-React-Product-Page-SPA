@@ -7,6 +7,10 @@ export const ContextProvider = ({children}) => {
     const [product, setProduct] = useState(undefined);
     const [paginatedData, setPaginatedData] = useState(undefined);
 
+    async function fetch(params) {
+        
+    }
+
     async function fetchProduct(productSlug) {
         const endpoint = url + `/product/` + productSlug;
         const res = await fetch(endpoint);
