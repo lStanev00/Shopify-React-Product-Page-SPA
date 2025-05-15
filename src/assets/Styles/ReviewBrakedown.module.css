@@ -21,6 +21,7 @@
   width: 142.8px;
   position: relative;
   display: flex;
+  padding-top: 1%;
 }
 
 .barMain {
