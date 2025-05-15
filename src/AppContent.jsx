@@ -4,6 +4,7 @@ import ProductMain from "./assets/Sections/ProductMain.jsx";
 import "./assets/Styles/Main.css";
 import { getVisitorId } from "./assets/helpers/getVisitorId";
 import { paginateReviews } from "./assets/helpers/paginateReviews.js";
+import ReviewsMain from "./assets/Sections/ReviewsMain.jsx";
 
 export default function AppContent() {
   const { product, setProduct, fetchProduct, setPaginatedData } = useContext(ContextVariables);
@@ -24,6 +25,7 @@ export default function AppContent() {
     return (
       <>
         <ProductMain />
+        <ReviewsMain />
       </>
     );
   }

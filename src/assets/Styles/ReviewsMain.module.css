@@ -1,0 +1,8 @@
+.mainSection {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+    gap: 60px;
+    width: 100%;
+    height: fit-content;
+}
