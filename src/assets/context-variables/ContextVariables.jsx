@@ -36,7 +36,7 @@ export const ContextProvider = ({children}) => {
     }
 
     return (
-        <ContextVariables.Provider value={{product, setProduct, fetchReviews, fetchProduct, paginatedData, setPaginatedData }}>
+        <ContextVariables.Provider value={{product, setProduct, reviews, fetchProduct, paginatedData, setPaginatedData }}>
             {children}
         </ContextVariables.Provider>
     )

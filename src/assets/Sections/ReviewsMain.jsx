@@ -6,7 +6,7 @@ import ReviewBreakdown from "../Components/ReviewBreakdown";
 import { SortDropdown } from "../Components/SortDropdown";
 
 export default function ReviewsMain () {
-    const { product, paginatedData, setPaginatedData } = useContext(ContextVariables);
+    const { product, paginatedData, setPaginatedData, reviews } = useContext(ContextVariables);
     const [sortBy, setSortBy] = useState("highest");
 
     if (paginatedData) {
@@ -23,12 +23,12 @@ export default function ReviewsMain () {
                                     {(product.avarageReviewsRate).toFixed(1)}
                                 </div>
 
-                                <div className={Style.reviewsCount}>Based on {product.reviews.length} reviews</div>
+                                <div className={Style.reviewsCount}>Based on {reviews.length} reviews</div>
 
                             </div>
 
                             <div className={Style.reviewBrakedown}>
-                                <ReviewBreakdown reviews={product.reviews} />
+                                <ReviewBreakdown reviews={reviews} />
                             </div>
 
                             <button className={Style.openReview}>Leave a review</button>
