@@ -7,11 +7,22 @@ export function sortOneToFive(array) {
 }
 
 export function filterHaveMedia(array) {
-  array = array.fitler((entry) => entry?.media.length > 0);
-  array = paginateReviews(array);
 
+  try {
+    array = (array || []).filter((entry) => entry?.media?.length > 0);
 
-  return array;
+    if (array.length > 0){
+  
+      array = paginateReviews(array);
+    }
+  
+  
+    return array;
+    
+  } catch (error) {
+    console.warn(error)
+    return[[]]
+  }
 }
 
 export function fiterUsefullReviews(array) {
