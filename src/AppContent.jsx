@@ -14,10 +14,11 @@ export default function AppContent() {
       const data = await fetchProduct();
                 
       if (data.reviews && data.reviews.length > 0) setPaginatedData(paginateReviews(data.reviews))
+      const visitorId = await getVisitorId();
+      setVisitorId(visitorId);
     }
 
     loadProduct();
-    setVisitorId(getVisitorId());
   }, []);
 
 

@@ -9,7 +9,7 @@ import {
     sortOneToFive,
     fiterUsefullReviews
 } from "../helpers/sortingReviews.js";
-import { svg } from "../Components/svgs.jsx";
+import { RenderVotes } from "../Components/RenderVotes.jsx";
 
 export default function ReviewsMain() {
     const {
@@ -44,6 +44,7 @@ export default function ReviewsMain() {
         else if (sortBy === "picture") setPaginatedData(filterHaveMedia(reviews));
         else if (sortBy === "helpful") setPaginatedData(fiterUsefullReviews(reviews));
     }, [sortBy]);
+
 
     if (paginatedData && currentPage && visitorId) {
         return (
@@ -113,57 +114,7 @@ export default function ReviewsMain() {
                                             <span className={Style.wasThatHelpfull}>
                                                 Was this helpful?
                                             </span>
-
-                                            {visitorId &&
-                                                (() => {
-                                                    const exist = review.votes[visitorId];
-
-                                                    if (exist) {
-                                                        if (exist === "like") {
-                                                            return (
-                                                                <>
-                                                                    <div className={Style.likes}>
-                                                                        <svg.Liked />
-                                                                    </div>
-                                                                    <div className={Style.dieslikes}>
-                                                                        <svg.Dislike />
-                                                                    </div>
-                                                                </>
-                                                            );
-                                                        } else if (exist === "dislike") {
-                                                            return (
-                                                                <>
-                                                                    <div className={Style.likes}>
-                                                                        <svg.Like />
-                                                                    </div>
-                                                                    <div className={Style.dieslikes}>
-                                                                        <svg.Disliked />
-                                                                    </div>
-                                                                </>
-                                                            );
-                                                        } else {
-                                                            return (
-                                                                <>
-                                                                    <div className={Style.likes}>
-                                                                        <svg.Like />
-                                                                    </div>
-                                                                    <div className={Style.dieslikes}>
-                                                                        <svg.Dislike />
-                                                                    </div>
-                                                                </>
-                                                            );
-                                                        }
-                                                    }
-
-                                                    return <></>;
-                                                })()}
-
-                                            <div className={Style.likes}>
-                                                <svg.Like />
-                                            </div>
-                                            <div className={Style.dieslikes}>
-                                                <svg.Dislike />
-                                            </div>
+                                            <RenderVotes review={review} />
                                         </div>
                                     </div>
                                 </div>

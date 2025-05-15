@@ -4,6 +4,7 @@ export const ContextVariables = createContext();
 
 export const ContextProvider = ({children}) => {
     const url = "https://shopify-rest-api-demo-production.up.railway.app";
+    // const url = "http://localhost:8080";
     const [product, setProduct] = useState(undefined);
     const [reviews, setReviews] = useState(undefined);
     const [visitorId, setVisitorId] = useState(undefined);

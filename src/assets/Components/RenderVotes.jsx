@@ -1,35 +1,66 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ContextVariables } from "../context-variables/ContextVariables";
+import Style from "../Styles/ReviewsMain.module.css"
+import { svg } from "./svgs";
 
 export function RenderVotes(review) {
     const {url, visitorId} = useContext(ContextVariables);
-    const exist = review.votes[visitorId];
+    const [vote, setVote] = useState(undefined);
+    const [dinamicReview, setReview] = useState(review.review);
+    
+    useEffect(() => {
+        const exist = dinamicReview.votes?.[visitorId];
+        if(exist) setVote(exist);
 
-    const voteHandler = (e) => {
+    }, [dinamicReview])
+
+    const voteHandler = async (e, type) => {
+        console.log(type)
+        const endpoint = url + `/reviews/${dinamicReview._id}/react`;
         
+        const res = await fetch(endpoint, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "x-visitor-id": visitorId,
+            },
+            body: JSON.stringify({
+                type: type
+            })
+        })
+
+        if (res.status == 200){
+            const newData = await res.json();
+
+            if(newData) {
+                setReview(newData);
+                setVote(type)
+            }
+        }
+
+
     }
 
-
-    if (exist === "like") {
+    if (vote === "like") {
         return (
             <>
-                <div className={Style.likes}>
+                <div onClick={async (e)=> await voteHandler(e, `like`)} className={Style.likes}>
                     <svg.Liked />
                 </div>
-                <div className={Style.dieslikes}>
+                <div onClick={async (e)=> await voteHandler(e, `dislike`)} className={Style.dieslikes}>
                     <svg.Dislike />
                 </div>
             </>
         );
     }
 
-    if (exist === "dislike") {
+    if (vote === "dislike") {
         return (
             <>
-                <div className={Style.likes}>
+                <div onClick={async (e)=> await voteHandler(e, `like`)} className={Style.likes}>
                     <svg.Like />
                 </div>
-                <div className={Style.dieslikes}>
+                <div onClick={async (e)=> await voteHandler(e, `dislike`)} className={Style.dieslikes}>
                     <svg.Disliked />
                 </div>
             </>
@@ -38,10 +69,10 @@ export function RenderVotes(review) {
 
     return (
         <>
-            <div className={Style.likes}>
+            <div onClick={async (e)=> await voteHandler(e, `like`)} className={Style.likes}>
                 <svg.Like />
             </div>
-            <div className={Style.dieslikes}>
+            <div onClick={async (e)=> await voteHandler(e, `dislike`)} className={Style.dieslikes}>
                 <svg.Dislike />
             </div>
         </>
