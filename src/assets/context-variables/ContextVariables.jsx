@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import { paginateReviews } from "../helpers/paginateReviews.js";
 
 export const ContextVariables = createContext();
 
@@ -13,6 +14,7 @@ export const ContextProvider = ({children}) => {
     useEffect(() => {
         if (product && product.reviews && product.reviews.length > 0){
             setReviews(product.reviews);
+            setPaginatedData(paginateReviews(product.reviews))
         }
 
     },[product])
