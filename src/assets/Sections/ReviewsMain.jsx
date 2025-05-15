@@ -71,6 +71,24 @@ export default function ReviewsMain () {
                                             <span className={Style.reviewDate}>{formatLocalDateTime(review.createdAt)}</span>
                                         </div>
 
+                                        <div className={Style.reviewInfoWrapper}>
+                                            <span className={Style.reviewTitle}>{review.title}</span>
+                                            <span className={Style.reviewDescriptin}>{review.content}</span>
+                                            {review.media.length> 0 && (
+                                                <div className={Style.reviewImageWrapper}>
+                                                    {review.media.map(href => {
+                                                        return (
+                                                            <img className={Style.reviewImage} key={href} src={href} alt="Reveiw Image" />
+                                                        )
+                                                    })}
+
+                                                </div>
+                                            )}
+                                            <div className={Style.reviewUserAction}>
+                                                <span className={Style.wasThatHelpfull}>Was this helpful?</span>
+                                            </div>
+                                        </div>
+
 
                                     </div>
                                 )
