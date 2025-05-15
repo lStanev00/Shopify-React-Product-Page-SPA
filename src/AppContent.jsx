@@ -23,10 +23,10 @@ export default function AppContent() {
 
   if (product) {
     return (
-      <>
+      <div className="container">
         <ProductMain />
         <ReviewsMain />
-      </>
+      </div>
     );
   }
 }

@@ -8,6 +8,7 @@
   width: 100%;
   height: fit-content;
   align-items: center;
+  position: relative;
 }
 
 .headerP {
@@ -92,5 +93,4 @@
   line-height: 110.00000000000001%;
   letter-spacing: 1px;
   color: #FDFEFD;
-;
 }
