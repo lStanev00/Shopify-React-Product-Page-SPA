@@ -1,15 +1,38 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ContextVariables } from "../context-variables/ContextVariables";
 import Style from "../Styles/ReviewsMain.module.css";
 import { StarsDiv } from "./ProductMain";
 import ReviewBreakdown from "../Components/ReviewBreakdown";
 import { SortDropdown } from "../Components/SortDropdown";
+import { filterHaveMedia, sortOneToFive, fiterUsefullReviews } from "../helpers/sortingReviews.js";
 
 export default function ReviewsMain () {
-    const { product, paginatedData, setPaginatedData, reviews } = useContext(ContextVariables);
+    const { product, paginatedData, setPaginatedData, reviews, fetchProduct } = useContext(ContextVariables);
     const [sortBy, setSortBy] = useState("highest");
+    const [pageCount, setPageCount] = useState();
+    const [currentPage, setCurrentPage] = useState(undefined);
 
-    if (paginatedData) {
+    useEffect(() => {
+        if(paginatedData) {
+            setPageCount(paginatedData.length);
+            setCurrentPage(paginatedData[0]);
+        }
+    },[paginatedData])
+
+    useEffect(()=> {}, [])
+
+    useEffect(() =>{
+        async function sortHighest() {
+            await fetchProduct();
+        }
+        if(sortBy == `highest`) sortHighest();
+        else if (sortBy == `lowest`) setPaginatedData(sortOneToFive(reviews))
+        else if (sortBy == `picture`) setPaginatedData(filterHaveMedia(reviews))
+        else if (sortBy == `helpful`) setPaginatedData(fiterUsefullReviews(reviews));
+
+    }, sortBy)
+
+    if (paginatedData && currentPage) {
         return(
             <>
                 <section className={Style.mainSection}>
@@ -38,9 +61,42 @@ export default function ReviewsMain () {
                         <SortDropdown className={Style.SortDropdown} value={sortBy} onChange={setSortBy} />
                     <div className={Style.commentsDiv}>
 
+                        {currentPage && (
+                            currentPage.map(review => {
+                                return (
+                                    <div className={Style.reviewMainWrapper} key={review._id}>
+                                        <div className={Style.suberInfo}>
+                                            <StarsDiv item={review} />
+                                            <span className={Style.suberName}>{review.name}</span>
+                                            <span className={Style.reviewDate}>{formatLocalDateTime(review.createdAt)}</span>
+                                        </div>
+
+
+                                    </div>
+                                )
+                            })
+                        )}
+
                     </div>
                 </section>
             </>
         )
     }
+}
+
+
+
+export function formatLocalDateTime(dateInput) {
+    if (!dateInput) return "";
+
+    const date = new Date(dateInput);
+
+    let result = date.toLocaleString("bg-BG", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+    });
+
+    result = result.replaceAll(`.`, `/`).replace(` г/`, ``);
+    return result
 }

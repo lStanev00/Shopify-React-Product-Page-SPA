@@ -106,5 +106,50 @@
   transform: scale(0.98);
 }
 
-.commentsDiv{}
+.commentsDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: fit-content;
+  height: fit-content;
+}
 
+.reviewMainWrapper {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  border-top: 0.8px solid #b6b7b5;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.suberInfo {
+  width: fit-content;
+  height: fit-content;
+  gap: 14px;
+  display: flex;
+  flex-direction: column;
+}
+
+.suberName {
+  width: fit-content;
+  height: fit-content;
+
+  font-family: Montserrat;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0%;
+}
+
+.reviewDate {
+  font-family: Montserrat;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  letter-spacing: 0%;
+  color: #7c7e7c;
+  align-items: flex-start;
+}
