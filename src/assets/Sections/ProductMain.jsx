@@ -58,9 +58,7 @@ export default function ProductMain() {
                         {starCount && (
                             [...Array(starCount)].map((dummy, i) => {
                                 return (
-                                    <>
                                     <div className={Style.starDiv} key={`star${i}`}><svg.FullStar /></div>
-                                    </>
                                 )
                             })
                         )}
