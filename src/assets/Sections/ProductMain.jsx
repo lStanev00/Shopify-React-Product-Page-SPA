@@ -78,10 +78,17 @@ export default function ProductMain() {
   }
 }
 
-export function StarsDiv() {
+export function StarsDiv({item}) {
   const {product} = useContext(ContextVariables);
   const [fullStars, setFullStars] = useState([...Array(Math.floor(product.avarageReviewsRate))]);
   const [emptyStars, setEmptyStars] = useState([...Array(5 - Math.floor(product.avarageReviewsRate))]);
+
+  useEffect(()=>{
+    if (item) {
+      setFullStars([...Array(item.rating)]);
+      setEmptyStars([...Array(5 - (item.rating))]);
+    }
+  },[item])
 
   return (
     <div className="starsDiv">
