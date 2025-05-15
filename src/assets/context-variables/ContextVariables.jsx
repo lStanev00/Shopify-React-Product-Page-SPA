@@ -1,17 +1,24 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+import { paginateReviews } from "../helpers/paginateReviews";
 
 export const ContextVariables = createContext();
 
 export const ContextProvider = ({children}) => {
     const url = "https://shopify-rest-api-demo-production.up.railway.app";
     const [product, setProduct] = useState(undefined);
+    const [reviews, setReviews] = useState(undefined);
     const [paginatedData, setPaginatedData] = useState(undefined);
 
-    async function fetch(params) {
-        
-    }
+    useEffect(() => {
+        if (product && product.reviews && product.reviews.length > 0){
+            setReviews(product.reviews);
+        }
 
-    async function fetchProduct(productSlug) {
+    },[product])
+
+    async function fetchProduct() {
+      const productSlug = window.location.pathname.replace("/products/", ``);
+
         const endpoint = url + `/product/` + productSlug;
         const res = await fetch(endpoint);
         if (!res.ok) return null;
@@ -20,15 +27,16 @@ export const ContextProvider = ({children}) => {
             if(data.reviews && data.reviews.length > 0){
                 const avarageReviewsRate = (data.reviews.reduce((sum, v) => sum + (v.rating || 0), 0)) / data.reviews.length;
                 data.avarageReviewsRate = avarageReviewsRate;
+                setReviews(data.reviews);
             }
-
+            setProduct(data);
             return data
         }
         return undefined
     }
 
     return (
-        <ContextVariables.Provider value={{product, setProduct, fetchProduct, paginatedData, setPaginatedData }}>
+        <ContextVariables.Provider value={{product, setProduct, fetchReviews, fetchProduct, paginatedData, setPaginatedData }}>
             {children}
         </ContextVariables.Provider>
     )
