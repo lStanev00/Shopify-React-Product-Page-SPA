@@ -92,19 +92,6 @@
   gap: 3px;
 }
 
-.startsDiv {
-  display: flex;
-  flex-direction: row;
-  gap: 1px;
-  width: fit-content;
-  height: fit-content;
-}
-
-.starDiv {
-  width: 20px;
-  height: 20px;
-}
-
 .reviewCount {
   font-family: Montserrat;
   font-weight: 400;

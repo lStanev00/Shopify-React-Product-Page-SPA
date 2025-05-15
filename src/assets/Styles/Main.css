@@ -6,3 +6,16 @@
   padding-left: 70px;
   padding-right: 60px;
 }
+
+.starsDiv {
+  display: flex;
+  flex-direction: row;
+  gap: 1px;
+  width: fit-content;
+  height: fit-content;
+}
+
+.starDiv {
+  width: 20px;
+  height: 20px;
+}
