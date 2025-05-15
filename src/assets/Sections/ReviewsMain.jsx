@@ -36,7 +36,7 @@ export default function ReviewsMain() {
     useEffect(() => {if(paginatedData){setCurrentPage(paginatedData[currentPageIndex])}}, [currentPageIndex]);
 
     useEffect(() => {
-        if (!reviews) console.log(reviews)
+        if (!reviews) return
         async function sortHighest() {
             await fetchProduct();
         }
