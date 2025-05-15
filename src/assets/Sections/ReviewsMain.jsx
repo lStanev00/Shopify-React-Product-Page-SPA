@@ -10,6 +10,7 @@ import {
     fiterUsefullReviews
 } from "../helpers/sortingReviews.js";
 import { RenderVotes } from "../Components/RenderVotes.jsx";
+import Pagination from "../Components/Pagination.jsx";
 
 export default function ReviewsMain() {
     const {
@@ -24,24 +25,28 @@ export default function ReviewsMain() {
     const [sortBy, setSortBy] = useState("highest");
     const [pageCount, setPageCount] = useState();
     const [currentPage, setCurrentPage] = useState(undefined);
+    const [currentPageIndex, setCurrentPageIndex] = useState(0);
 
     useEffect(() => {
         if (paginatedData) {
             setPageCount(paginatedData.length);
-            setCurrentPage(paginatedData[0]);
+            setCurrentPage(paginatedData[currentPageIndex]);
         }
     }, [paginatedData]);
 
-    useEffect(() => {}, []);
+    useEffect(() => {if(paginatedData){setCurrentPage(paginatedData[currentPageIndex])}}, [currentPageIndex]);
 
     useEffect(() => {
+        if (!reviews) console.log(reviews)
         async function sortHighest() {
             await fetchProduct();
         }
-
         if (sortBy === "highest") sortHighest();
         else if (sortBy === "lowest") setPaginatedData(sortOneToFive(reviews));
-        else if (sortBy === "picture") setPaginatedData(filterHaveMedia(reviews));
+        else if (sortBy === "picture") {
+
+            setPaginatedData(filterHaveMedia(reviews))
+        }
         else if (sortBy === "helpful") setPaginatedData(fiterUsefullReviews(reviews));
     }, [sortBy]);
 
@@ -66,7 +71,7 @@ export default function ReviewsMain() {
                             </div>
 
                             <div className={Style.reviewBrakedown}>
-                                <ReviewBreakdown reviews={reviews} />
+                                <ReviewBreakdown review={reviews} />
                             </div>
 
                             <button className={Style.openReview}>Leave a review</button>
@@ -121,6 +126,7 @@ export default function ReviewsMain() {
                             );
                         })}
                     </div>
+                    <Pagination paginatedData={paginatedData} setCurrentPageIndex={setCurrentPageIndex} currentPage={currentPage} />
                 </section>
             </>
         );

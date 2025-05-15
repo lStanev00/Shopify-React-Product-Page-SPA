@@ -1,0 +1,53 @@
+.paginationContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 20px;
+
+    width: 100%;
+}
+
+.pageBtn {
+    width: 35px;
+    height: 35px;
+    border-radius: 100px;
+    border: none;
+    background: transparent;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 150%;
+    color: #494A48;
+    cursor: pointer;
+}
+
+.pageBtn_active {
+    background: #9F3419;
+    cursor: pointer;
+    line-height: 150%;
+    font-weight: 400;
+    border: none;
+    border-radius: 100px;
+    font-family: 'Montserrat', sans-serif;
+
+    color: white;
+    font-weight: 500;
+    opacity: 1;
+    width: 35px;
+    height: 35px;
+}
+
+.arrowBtn {
+    width: 35px;
+    height: 35px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #1F221F;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

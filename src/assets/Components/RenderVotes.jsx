@@ -83,7 +83,6 @@ export function RenderVotes(review) {
 }
 
 function countVotes(votes) {
-    console.log(votes)
     let likes = 0;
     let dislikes = 0;
 
