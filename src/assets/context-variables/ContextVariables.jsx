@@ -7,6 +7,7 @@ export const ContextProvider = ({children}) => {
     const url = "https://shopify-rest-api-demo-production.up.railway.app";
     const [product, setProduct] = useState(undefined);
     const [reviews, setReviews] = useState(undefined);
+    const [visitorId, setVisitorId] = useState(undefined);
     const [paginatedData, setPaginatedData] = useState(undefined);
 
     useEffect(() => {
@@ -36,7 +37,7 @@ export const ContextProvider = ({children}) => {
     }
 
     return (
-        <ContextVariables.Provider value={{product, setProduct, reviews, fetchProduct, paginatedData, setPaginatedData }}>
+        <ContextVariables.Provider value={{product, setProduct, reviews, fetchProduct, paginatedData, setPaginatedData, visitorId, setVisitorId }}>
             {children}
         </ContextVariables.Provider>
     )
