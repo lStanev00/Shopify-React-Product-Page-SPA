@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
-import { ContextVariables } from "../../context-variables/ContextVariables";
+import { ContextVariables } from "../context-variables/ContextVariables";
 import Style from "../../Styles/ProductMain.module.css";
-import {svg} from "../../Components/svgs"
+import {svg} from "../Components/svgs"
 
 export default function ProductMain() {
   const { product } = useContext(ContextVariables);

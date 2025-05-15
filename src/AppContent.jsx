@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { ContextVariables } from "./assets/context-variables/ContextVariables";
-import ProductMain from "./assets/Sections/Product/ProductMain";
+import ProductMain from "./assets/Sections/ProductMain.jsx";
 import "./assets/Styles/Main.css";
 import { getVisitorId } from "./assets/helpers/getVisitorId";
 import { paginateReviews } from "./assets/helpers/paginateReviews.js";
