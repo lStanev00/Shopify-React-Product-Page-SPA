@@ -7,11 +7,18 @@ export default function ProductMain() {
   const { product, reviews } = useContext(ContextVariables);
   const [mainImage, setMainImage] = useState(product?.media[0]);
   const [imageList, setImageList] = useState(undefined);
-  const [rating, setRating] = useState((product.avarageReviewsRate).toFixed(1));
-  const [reviewsCount, Reviews] = useState(reviews.length);
+  const [rating, setRating] = useState(0);
+  const [reviewsCount, Reviews] = useState(0);
 
   useEffect(() => {
     if (product) setImageList(product?.media);
+    if(product && product.avarageReviewsRate) {
+
+      setRating((product.avarageReviewsRate).toFixed(1))
+    }
+    if(reviews){
+      Reviews(reviews.length);
+    }
   }, [product]);
 
   const handleImageListClick = (e) => {
@@ -67,6 +74,7 @@ export default function ProductMain() {
 
             <button
               id="#ProductSubmitButton-template--24968587608408__main"
+              style={{marginTop: "20px"}}
               className={Style.addToCartButton}
             >
               ADD TO CART
@@ -80,8 +88,8 @@ export default function ProductMain() {
 
 export function StarsDiv({item}) {
   const {product} = useContext(ContextVariables);
-  const [fullStars, setFullStars] = useState([...Array(Math.floor(product.avarageReviewsRate))]);
-  const [emptyStars, setEmptyStars] = useState([...Array(5 - Math.floor(product.avarageReviewsRate))]);
+  const [fullStars, setFullStars] = useState([...Array(Math.floor(product.avarageReviewsRate ?? 0))]);
+  const [emptyStars, setEmptyStars] = useState([...Array(5 - Math.floor(product.avarageReviewsRate ?? 0))]);
 
   useEffect(()=>{
     if (item) {

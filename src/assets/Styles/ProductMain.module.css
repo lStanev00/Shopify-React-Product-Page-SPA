@@ -110,7 +110,7 @@
   line-height: 135%;
   letter-spacing: 0%;
   width: 523px;
-  height: 154px;
+  height: fit-content;
   transition: background-color 0.3s ease;
 }
 
