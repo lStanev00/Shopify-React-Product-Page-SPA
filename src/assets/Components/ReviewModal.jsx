@@ -4,7 +4,7 @@ import { svg } from "./svgs";
 import { ContextVariables } from "../context-variables/ContextVariables";
 
 export default function ReviewModal() {
-    const { setTrigger, product, visitorId, url } = useContext(ContextVariables);
+    const { setTrigger, product, visitorId, url, fetchProduct } = useContext(ContextVariables);
     const [stars, setStars] = useState(0);
     const [errorMessage, setErrorMessage] = useState("");
     const [name, setName] = useState("");
@@ -57,7 +57,9 @@ export default function ReviewModal() {
 
             const data = await res.json();
             console.log("Review submitted:", data);
+            
             setTrigger(false);
+            await fetchProduct();
         } catch (err) {
             showError("Could not submit review.");
         }

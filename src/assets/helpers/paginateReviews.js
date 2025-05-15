@@ -1,5 +1,5 @@
 export function paginateReviews(reviewsArray) {
-    if (reviewsArray.length < 11) return [reviewsArray]
+    if (!reviewsArray ||reviewsArray.length < 11) return [reviewsArray]
     const result = [];
     const iterations = Math.floor(reviewsArray.length / 10);
 

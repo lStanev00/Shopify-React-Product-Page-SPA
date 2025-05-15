@@ -5,7 +5,7 @@ import { ContextVariables } from "../context-variables/ContextVariables";
 
 export function ReviewBreakdown() {
     const {reviews} = useContext(ContextVariables);
-    const totalReviews = reviews.length;
+    const totalReviews = reviews?.length ?? 0;
 
     const ratingCounts = {
         5: 0,
@@ -15,13 +15,17 @@ export function ReviewBreakdown() {
         1: 0,
     };
 
+    try {
     for (const review of reviews) {
         const r = review.rating;
         if (ratingCounts[r] !== undefined) {
             ratingCounts[r]++;
         }
     }
-
+    
+    } catch (error) {
+        console.warn(`No reviews`)
+    }
     const rows = Object.keys(ratingCounts)
         .sort((a, b) => b - a) 
         .map((star) => {

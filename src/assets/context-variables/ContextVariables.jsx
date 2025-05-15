@@ -32,6 +32,8 @@ export const ContextProvider = ({children}) => {
                 const avarageReviewsRate = (data.reviews.reduce((sum, v) => sum + (v.rating || 0), 0)) / data.reviews.length;
                 data.avarageReviewsRate = avarageReviewsRate;
                 setReviews(data.reviews);
+            } else {
+                data.avarageReviewsRate = 0;
             }
             setProduct(data);
             return data

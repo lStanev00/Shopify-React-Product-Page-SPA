@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { use, useContext, useEffect, useState } from "react";
 import { ContextVariables } from "../context-variables/ContextVariables";
 import Style from "../Styles/ReviewsMain.module.css";
 import { StarsDiv } from "./ProductMain";
@@ -15,6 +15,7 @@ import Pagination from "../Components/Pagination.jsx";
 export default function ReviewsMain() {
     const {
         product,
+        setProduct,
         paginatedData,
         setPaginatedData,
         reviews,
@@ -34,6 +35,16 @@ export default function ReviewsMain() {
         }
     }, [paginatedData]);
 
+    useEffect(() => {
+        if (product){
+            if(!product.avarageReviewsRate) {
+                let mock = product;
+                mock.avarageReviewsRate = 0;
+                setProduct(mock);
+            }
+        }
+    }, [product])
+
     useEffect(() => {if(paginatedData){setCurrentPage(paginatedData[currentPageIndex])}}, [currentPageIndex]);
 
     useEffect(() => {
@@ -50,7 +61,7 @@ export default function ReviewsMain() {
         else if (sortBy === "helpful") setPaginatedData(fiterUsefullReviews(reviews));
     }, [sortBy]);
 
-    if (paginatedData && visitorId) {
+    if ( visitorId) {
         return (
             <>
                 <section className={Style.mainSection}>
@@ -61,11 +72,11 @@ export default function ReviewsMain() {
                             <div className={Style.currentReviewsMaxes}>
                                 <div className={Style.currentStarCount}>
                                     <StarsDiv />
-                                    {product.avarageReviewsRate.toFixed(1)}
+                                    {product.avarageReviewsRate.toFixed(1) ?? 0}
                                 </div>
 
                                 <div className={Style.reviewsCount}>
-                                    Based on {reviews.length} reviews
+                                    Based on {reviews?.length ?? 0} reviews
                                 </div>
                             </div>
 
@@ -83,7 +94,7 @@ export default function ReviewsMain() {
                         onChange={setSortBy}
                     />
 
-                    {currentPage && (
+                    {currentPage && paginatedData && (
                         <>
                             <div className={Style.commentsDiv}>
                                 {currentPage.map((review) => {

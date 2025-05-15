@@ -17,7 +17,7 @@ export default function ProductMain() {
       setRating((product.avarageReviewsRate).toFixed(1))
     }
     if(reviews){
-      Reviews(reviews.length);
+      Reviews(reviews.length ?? 0);
     }
   }, [product]);
 
