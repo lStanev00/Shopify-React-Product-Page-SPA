@@ -50,7 +50,7 @@ export function RenderVotes(review) {
                 <div onClick={async (e)=> await voteHandler(e, `like`)} className={Style.likes}>
                     <svg.Liked /> {votes.likes}
                 </div>
-                <div onClick={async (e)=> await voteHandler(e, `dislike`)} className={Style.dieslikes}>
+                <div onClick={async (e)=> await voteHandler(e, `dislike`)} className={Style.dislikes}>
                     <svg.Dislike /> {votes.dislikes}
                 </div>
             </>
@@ -63,7 +63,7 @@ export function RenderVotes(review) {
                 <div onClick={async (e)=> await voteHandler(e, `like`)} className={Style.likes}>
                     <svg.Like /> {votes.likes}
                 </div>
-                <div onClick={async (e)=> await voteHandler(e, `dislike`)} className={Style.dieslikes}>
+                <div onClick={async (e)=> await voteHandler(e, `dislike`)} className={Style.dislikes}>
                     <svg.Disliked /> {votes.dislikes}
                 </div>
             </>
@@ -75,7 +75,7 @@ export function RenderVotes(review) {
             <div onClick={async (e)=> await voteHandler(e, `like`)} className={Style.likes}>
                 <svg.Like /> {votes.likes}
             </div>
-            <div onClick={async (e)=> await voteHandler(e, `dislike`)} className={Style.dieslikes}>
+            <div onClick={async (e)=> await voteHandler(e, `dislike`)} className={Style.dislikes}>
                 <svg.Dislike /> {votes.dislikes}
             </div>
         </>

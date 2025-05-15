@@ -1,219 +1,233 @@
 .mainSection {
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 10px;
-  padding-right: 300px;
-  padding-left: 300px;
-  gap: 60px;
-  width: 988px;
-  height: fit-content;
-  align-items: center;
-  position: relative;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+    padding-right: 300px;
+    padding-left: 300px;
+    gap: 60px;
+    width: 988px;
+    height: fit-content;
+    align-items: center;
+    position: relative;
 }
 
 .headerP {
-  font-family: Montserrat;
-  font-weight: 500;
-  font-size: 31px;
-  line-height: 120%;
-  letter-spacing: 0.8%;
-  text-align: center;
-  width: fit-content;
-  height: fit-content;
-  margin-top: 0;
+    font-family: Montserrat;
+    font-weight: 500;
+    font-size: 31px;
+    line-height: 120%;
+    letter-spacing: 0.8%;
+    text-align: center;
+    width: fit-content;
+    height: fit-content;
+    margin-top: 0;
 }
 
 .reviewsContent {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: fit-content;
-  gap: 40px;
-  padding: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+    gap: 40px;
+    padding: 0;
 }
 
 .contentHeader {
-  width: 100%;
-  height: fit-content;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .currentReviewsMaxes {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: fit-content;
-  height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: fit-content;
+    height: 100%;
 }
 
 .currentStarCount {
-  display: flex;
-  flex: row;
-  gap: 1px;
-  width: fit-content;
-  height: fit-content;
-  justify-content: center;
+    display: flex;
+    flex: row;
+    gap: 1px;
+    width: fit-content;
+    height: fit-content;
+    justify-content: center;
 }
 
 .reviewsCount {
-  display: flex;
-  padding: 0;
-  font-family: Montserrat;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 150%;
-  letter-spacing: 0%;
-  text-align: center;
-  color: #7c7e7c;
+    display: flex;
+    padding: 0;
+    font-family: Montserrat;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+    letter-spacing: 0%;
+    text-align: center;
+    color: #7c7e7c;
 }
 
 .reviewbrakedown {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  width: fit-content;
-  height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: fit-content;
+    height: fit-content;
 }
 
 .openReview {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 18px 13px;
-  width: 186px;
-  height: fit-content;
-  background: #9f3419;
-  border: none;
-  font-family: Montserrat;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 110.00000000000001%;
-  letter-spacing: 1px;
-  color: #fdfefd;
-  cursor: pointer;
-  transition: background-color 0.2s, transform 0.1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 13px;
+    width: 186px;
+    height: fit-content;
+    background: #9f3419;
+    border: none;
+    font-family: Montserrat;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 110.00000000000001%;
+    letter-spacing: 1px;
+    color: #fdfefd;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
 }
 
 .openReview:hover {
-  background-color: #8f2b15;
+    background-color: #8f2b15;
 }
 
 .openReview:active {
-  background-color: #7a2512;
-  transform: scale(0.98);
+    background-color: #7a2512;
+    transform: scale(0.98);
 }
 
 .commentsDiv {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  width: 100%;
-  height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+    height: fit-content;
 }
 
 .reviewMainWrapper {
-  width: fit-content;
-  height: fit-content;
-  display: flex;
-  flex-direction: row;
-  gap: 100px;
-  border-top: 0.8px solid #b6b7b5;
-  padding-top: 20px;
-  padding-bottom: 20px;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+    border-top: 0.8px solid #b6b7b5;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .suberInfo {
-  width: fit-content;
-  height: fit-content;
-  gap: 14px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+    width: fit-content;
+    height: fit-content;
+    gap: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .suberName {
-  width: fit-content;
-  height: fit-content;
+    width: fit-content;
+    height: fit-content;
 
-  font-family: Montserrat;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 150%;
-  letter-spacing: 0%;
+    font-family: Montserrat;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: 0%;
 }
 
 .reviewDate {
-  font-family: Montserrat;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 150%;
-  letter-spacing: 0%;
-  color: #7c7e7c;
+    font-family: Montserrat;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+    letter-spacing: 0%;
+    color: #7c7e7c;
 }
 
 .reviewInfoWrapper {
-  width: fit-content;
-  height: fit-content;
-  gap: 14px;
-  display: flex;
-  flex-direction: column;
-  padding: 0;
+    width: fit-content;
+    height: fit-content;
+    gap: 14px;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
 }
 
 .reviewTitle {
-  height: fit-content;
-  width: fit-content;
-  font-family: Montserrat;
-  font-weight: 600;
-  font-size: 17px;
-  line-height: 130%;
-  letter-spacing: 0%;
+    height: fit-content;
+    width: fit-content;
+    font-family: Montserrat;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 130%;
+    letter-spacing: 0%;
 }
 
 .reviewDescriptin {
-  width: 755px;
-  height: fit-content;
-  font-family: Montserrat;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 150%;
-  letter-spacing: 0%;
+    width: 755px;
+    height: fit-content;
+    font-family: Montserrat;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: 0%;
 }
 
 .reviewImageWrapper {
-  display: flex;
-  width: 100%;
-  flex-direction: row;
-  flex-wrap: wrap;
-  height: fit-content;
-  width: 100%;
-  align-items: flex-start;
-  gap: 15px;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: fit-content;
+    width: 100%;
+    align-items: flex-start;
+    gap: 15px;
 }
 
 .reviewImage {
-  width: 121px;
-  height: 121px;
+    width: 121px;
+    height: 121px;
 }
 
 .reviewUserAction {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: fit-content;
-  width: 755px;
-  gap: 22px;
-  justify-content: flex-end;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: fit-content;
+    width: 755px;
+    gap: 22px;
+    justify-content: flex-end;
 }
 
 .wasThatHelpfull {
+    font-family: Montserrat;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: 0%;
+    color: #494a48;
+}
+
+.likes, .dislikes {
   font-family: Montserrat;
   font-weight: 400;
   font-size: 16px;
   line-height: 150%;
   letter-spacing: 0%;
-  color: #494a48;
+
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    justify-content: center;
+    text-align: center;
 }
