@@ -92,5 +92,16 @@
   font-size: 15px;
   line-height: 110.00000000000001%;
   letter-spacing: 1px;
-  color: #FDFEFD;
+  color: #fdfefd;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.openReview:hover {
+  background-color: #8f2b15;
+}
+
+.openReview:active {
+  background-color: #7a2512;
+  transform: scale(0.98);
 }
