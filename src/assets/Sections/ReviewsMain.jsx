@@ -4,12 +4,23 @@ import Style from "../Styles/ReviewsMain.module.css";
 import { StarsDiv } from "./ProductMain";
 import ReviewBreakdown from "../Components/ReviewBreakdown";
 import { SortDropdown } from "../Components/SortDropdown";
-import { filterHaveMedia, sortOneToFive, fiterUsefullReviews } from "../helpers/sortingReviews.js";
+import {
+    filterHaveMedia,
+    sortOneToFive,
+    fiterUsefullReviews
+} from "../helpers/sortingReviews.js";
 import { svg } from "../Components/svgs.jsx";
 
 export default function ReviewsMain() {
-    const { product, paginatedData, setPaginatedData, reviews, fetchProduct, visitorId } =
-        useContext(ContextVariables);
+    const {
+        product,
+        paginatedData,
+        setPaginatedData,
+        reviews,
+        fetchProduct,
+        visitorId
+    } = useContext(ContextVariables);
+
     const [sortBy, setSortBy] = useState("highest");
     const [pageCount, setPageCount] = useState();
     const [currentPage, setCurrentPage] = useState(undefined);
@@ -27,11 +38,12 @@ export default function ReviewsMain() {
         async function sortHighest() {
             await fetchProduct();
         }
-        if (sortBy == `highest`) sortHighest();
-        else if (sortBy == `lowest`) setPaginatedData(sortOneToFive(reviews));
-        else if (sortBy == `picture`) setPaginatedData(filterHaveMedia(reviews));
-        else if (sortBy == `helpful`) setPaginatedData(fiterUsefullReviews(reviews));
-    }, sortBy);
+
+        if (sortBy === "highest") sortHighest();
+        else if (sortBy === "lowest") setPaginatedData(sortOneToFive(reviews));
+        else if (sortBy === "picture") setPaginatedData(filterHaveMedia(reviews));
+        else if (sortBy === "helpful") setPaginatedData(fiterUsefullReviews(reviews));
+    }, [sortBy]);
 
     if (paginatedData && currentPage && visitorId) {
         return (
@@ -65,110 +77,98 @@ export default function ReviewsMain() {
                         value={sortBy}
                         onChange={setSortBy}
                     />
+
                     <div className={Style.commentsDiv}>
-                        {currentPage &&
-                            currentPage.map((review) => {
-                                return (
-                                    <div className={Style.reviewMainWrapper} key={review._id}>
-                                        <div className={Style.suberInfo}>
-                                            <StarsDiv item={review} />
-                                            <span className={Style.suberName}>{review.name}</span>
-                                            <span className={Style.reviewDate}>
-                                                {formatLocalDateTime(review.createdAt)}
-                                            </span>
-                                        </div>
+                        {currentPage.map((review) => {
+                            return (
+                                <div className={Style.reviewMainWrapper} key={review._id}>
+                                    <div className={Style.suberInfo}>
+                                        <StarsDiv item={review} />
+                                        <span className={Style.suberName}>{review.name}</span>
+                                        <span className={Style.reviewDate}>
+                                            {formatLocalDateTime(review.createdAt)}
+                                        </span>
+                                    </div>
 
-                                        <div className={Style.reviewInfoWrapper}>
-                                            <span className={Style.reviewTitle}>
-                                                {review.title}
-                                            </span>
-                                            <span className={Style.reviewDescriptin}>
-                                                {review.content}
-                                            </span>
-                                            {review.media.length > 0 && (
-                                                <div className={Style.reviewImageWrapper}>
-                                                    {review.media.map((href) => {
-                                                        return (
-                                                            <img
-                                                                className={Style.reviewImage}
-                                                                key={href}
-                                                                src={href}
-                                                                alt="Reveiw Image"
-                                                            />
-                                                        );
-                                                    })}
-                                                </div>
-                                            )}
-                                            <div className={Style.reviewUserAction}>
-                                                <span className={Style.wasThatHelpfull}>
-                                                    Was this helpful?
-                                                </span>
+                                    <div className={Style.reviewInfoWrapper}>
+                                        <span className={Style.reviewTitle}>{review.title}</span>
+                                        <span className={Style.reviewDescriptin}>
+                                            {review.content}
+                                        </span>
 
-                                                {visitorId &&
-                                                    (() => {
-                                                        const exist = review.votes[visitorId];
-                                                        if (exist) {
-                                                            if (exist == `like`) {
-                                                                return (
-                                                                    <>
-                                                                        <div
-                                                                            className={Style.likes}>
-                                                                            <svg.Liked />
-                                                                        </div>
-                                                                        <div
-                                                                            className={
-                                                                                Style.dieslikes
-                                                                            }>
-                                                                            <svg.Dislike />
-                                                                        </div>
-                                                                    </>
-                                                                );
-                                                            } else if (exist == "dislike") {
-                                                                return (
-                                                                    <>
-                                                                        <div
-                                                                            className={Style.likes}>
-                                                                            <svg.Like />
-                                                                        </div>
-                                                                        <div
-                                                                            className={
-                                                                                Style.dieslikes
-                                                                            }>
-                                                                            <svg.Disliked />
-                                                                        </div>
-                                                                    </>
-                                                                );
-                                                            } else {
-                                                                return (
-                                                                    <>
-                                                                        <div
-                                                                            className={Style.likes}>
-                                                                            <svg.Like />
-                                                                        </div>
-                                                                        <div
-                                                                            className={
-                                                                                Style.dieslikes
-                                                                            }>
-                                                                            <svg.Dislike />
-                                                                        </div>
-                                                                    </>
-                                                                );
-                                                            }
+                                        {review.media.length > 0 && (
+                                            <div className={Style.reviewImageWrapper}>
+                                                {review.media.map((href) => (
+                                                    <img
+                                                        className={Style.reviewImage}
+                                                        key={href}
+                                                        src={href}
+                                                        alt="Reveiw Image"
+                                                    />
+                                                ))}
+                                            </div>
+                                        )}
+
+                                        <div className={Style.reviewUserAction}>
+                                            <span className={Style.wasThatHelpfull}>
+                                                Was this helpful?
+                                            </span>
+
+                                            {visitorId &&
+                                                (() => {
+                                                    const exist = review.votes[visitorId];
+
+                                                    if (exist) {
+                                                        if (exist === "like") {
+                                                            return (
+                                                                <>
+                                                                    <div className={Style.likes}>
+                                                                        <svg.Liked />
+                                                                    </div>
+                                                                    <div className={Style.dieslikes}>
+                                                                        <svg.Dislike />
+                                                                    </div>
+                                                                </>
+                                                            );
+                                                        } else if (exist === "dislike") {
+                                                            return (
+                                                                <>
+                                                                    <div className={Style.likes}>
+                                                                        <svg.Like />
+                                                                    </div>
+                                                                    <div className={Style.dieslikes}>
+                                                                        <svg.Disliked />
+                                                                    </div>
+                                                                </>
+                                                            );
+                                                        } else {
+                                                            return (
+                                                                <>
+                                                                    <div className={Style.likes}>
+                                                                        <svg.Like />
+                                                                    </div>
+                                                                    <div className={Style.dieslikes}>
+                                                                        <svg.Dislike />
+                                                                    </div>
+                                                                </>
+                                                            );
                                                         }
-                                                        return <></>;
-                                                    })()}
+                                                    }
 
-                                                <div className={Style.likes}>
-                                                    <svg.Like />
-                                                </div>
-                                                <div className={Style.dieslikes}>
-                                                    <svg.Dislike />
-                                                </div>
+                                                    return <></>;
+                                                })()}
+
+                                            <div className={Style.likes}>
+                                                <svg.Like />
+                                            </div>
+                                            <div className={Style.dieslikes}>
+                                                <svg.Dislike />
                                             </div>
                                         </div>
                                     </div>
-                                );
-                            })}
+                                </div>
+                            );
+                        })}
                     </div>
                 </section>
             </>
@@ -184,9 +184,9 @@ export function formatLocalDateTime(dateInput) {
     let result = date.toLocaleString("bg-BG", {
         day: "2-digit",
         month: "2-digit",
-        year: "numeric",
+        year: "numeric"
     });
 
-    result = result.replaceAll(`.`, `/`).replace(` г/`, ``);
+    result = result.replaceAll(".", "/").replace(" г/", "");
     return result;
 }
