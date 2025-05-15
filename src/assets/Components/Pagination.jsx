@@ -11,7 +11,7 @@ export default function Pagination({ currentPage, paginatedData, setCurrentPageI
                     {i + 1}
                 </button>
             ))}
-            <button className={Style.arrowBtn} onClick={() => setCurrentPageIndex(currentPageIndex + 1)}>
+            <button disabled={currentPageIndex == paginatedData?.length - 1} className={Style.arrowBtn} onClick={() => setCurrentPageIndex(currentPageIndex + 1)}>
                 <svg
                     width="18"
                     height="13"
