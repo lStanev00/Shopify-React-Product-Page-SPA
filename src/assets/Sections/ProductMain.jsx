@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { ContextVariables } from "../context-variables/ContextVariables";
 import Style from "../Styles/ProductMain.module.css";
-import {svg} from "../Components/svgs"
+import { svg } from "../Components/svgs";
 
 export default function ProductMain() {
   const { product } = useContext(ContextVariables);
@@ -11,14 +11,16 @@ export default function ProductMain() {
   const [starCount, setStarCount] = useState(Math.round(rating));
   const [reviewsCount, Reviews] = useState(102);
 
-  useEffect(() => {if (product) setImageList(product?.media)}, [product]);
+  useEffect(() => {
+    if (product) setImageList(product?.media);
+  }, [product]);
 
   const handleImageListClick = (e) => {
     const element = e.target;
     const href = element.src;
 
     return setMainImage(href);
-  }
+  };
 
   if (product) {
     return (
@@ -46,33 +48,61 @@ export default function ProductMain() {
               })}
           </div>
 
-          <div className={Style.productContent} >
+          <div className={Style.productContent}>
             <div className={Style.contentHeader}>
-                <span className={Style.productName}>{product.title}</span>
-                <span className={Style.productPrice}>{product.price.amount} {product.price.currencyCode}</span>
+              <span className={Style.productName}>{product.title}</span>
+              <span className={Style.productPrice}>
+                {product.price.amount} {product.price.currencyCode}
+              </span>
             </div>
 
             <div className={Style.productDescriptionContent}>
-                <div className={Style.contentReviews}>
-                    <div className={Style.startsDiv}>
-                        {starCount && (
-                            [...Array(starCount)].map((dummy, i) => {
-                                return (
-                                    <div className={Style.starDiv} key={`star${i}`}><svg.FullStar /></div>
-                                )
-                            })
-                        )}
-                    </div>
-                    <div className={Style.reviewCounts}>{rating} ( {reviewsCount} reviews )</div>
+              <div className={Style.contentReviews}>
+                <div className="starsDiv">
+                  {starCount &&
+                    [...Array(starCount)].map((dummy, i) => {
+                      return (
+                        <div className="starDiv" key={`star${i}`}>
+                          <svg.FullStar />
+                        </div>
+                      );
+                    })}
                 </div>
-                <p className={Style.productDescription}>{product.description}</p>
+                <div className={Style.reviewCounts}>
+                  {rating} ( {reviewsCount} reviews )
+                </div>
+              </div>
+              <p className={Style.productDescription}>{product.description}</p>
             </div>
 
-            <button id="#ProductSubmitButton-template--24968587608408__main" className={Style.addToCartButton}>ADD TO CART</button>
-
+            <button
+              id="#ProductSubmitButton-template--24968587608408__main"
+              className={Style.addToCartButton}
+            >
+              ADD TO CART
+            </button>
           </div>
         </section>
       </>
     );
   }
+}
+
+export function StarRatingCount() {
+  const {product} = useContext(ContextVariables);
+  
+
+
+  return (
+    <div className="starsDiv">
+      {starCount &&
+        [...Array(starCount)].map((dummy, i) => {
+          return (
+            <div className="starDiv" key={`star${i}`}>
+              <svg.FullStar />
+            </div>
+          );
+        })}
+    </div>
+  );
 }
