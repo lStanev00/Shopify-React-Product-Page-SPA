@@ -40,3 +40,12 @@
   border: none;
   border-radius: 9999px;
 }
+
+.count {
+  font-family: Montserrat;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 150%;
+  letter-spacing: 0%;
+  text-align: center;
+}

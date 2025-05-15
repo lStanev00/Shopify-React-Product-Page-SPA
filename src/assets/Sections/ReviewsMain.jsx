@@ -28,6 +28,8 @@ export default function ReviewsMain () {
                             <div className={Style.reviewBrakedown}>
                                 <ReviewBreakdown reviews={product.reviews} />
                             </div>
+
+                            <button className={Style.openReview}>Leave a review</button>
                         </div>
                     </div>
                 </section>
