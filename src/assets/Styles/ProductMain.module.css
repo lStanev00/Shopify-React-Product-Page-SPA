@@ -124,8 +124,14 @@
   cursor: pointer;
   font-size: 24px;
   color: #ccc;
+  transition: background-color 0.2s, transform 0.1s;
+
 }
 
 .addToCartButton:hover {
   background-color: #7b241c;
+}
+
+.openReview:active {
+  background-color: #973019;
 }
