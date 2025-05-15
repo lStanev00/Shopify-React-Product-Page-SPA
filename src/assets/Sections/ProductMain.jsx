@@ -63,7 +63,7 @@ export default function ProductMain() {
                     [...Array(starCount)].map((dummy, i) => {
                       return (
                         <div className="starDiv" key={`star${i}`}>
-                          <svg.FullStar />
+                          <svg.EmptyStar />
                         </div>
                       );
                     })}
@@ -99,7 +99,7 @@ export function StarRatingCount() {
         [...Array(starCount)].map((dummy, i) => {
           return (
             <div className="starDiv" key={`star${i}`}>
-              <svg.FullStar />
+              <svg.EmptyStar />
             </div>
           );
         })}
