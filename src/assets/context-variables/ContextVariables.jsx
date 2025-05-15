@@ -7,7 +7,8 @@ export const ContextProvider = ({children}) => {
     const [product, setProduct] = useState(undefined);
 
     async function fetchProduct(productSlug) {
-        const endpoint = url + `/product/belgian-hazelnut-cookie`
+        const endpoint = url + `/product/` + productSlug;
+        console.log(endpoint)
 
         const res = await fetch(endpoint);
 

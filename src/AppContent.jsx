@@ -10,7 +10,7 @@ export default function AppContent() {
   useEffect(() => {
     async function loadProduct() {
       const slug = window.location.pathname.replace("/products/", ``);
-      const data = await fetchProduct("");
+      const data = await fetchProduct(slug);
       setProduct(data);
     }
     loadProduct();
