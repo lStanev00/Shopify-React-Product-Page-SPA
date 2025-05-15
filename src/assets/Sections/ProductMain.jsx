@@ -7,9 +7,8 @@ export default function ProductMain() {
   const { product } = useContext(ContextVariables);
   const [mainImage, setMainImage] = useState(product?.media[0]);
   const [imageList, setImageList] = useState(undefined);
-  const [rating, setRating] = useState(4.9);
-  const [starCount, setStarCount] = useState(Math.round(rating));
-  const [reviewsCount, Reviews] = useState(102);
+  const [rating, setRating] = useState((product.avarageReviewsRate).toFixed(1));
+  const [reviewsCount, Reviews] = useState(product.reviews.length);
 
   useEffect(() => {
     if (product) setImageList(product?.media);

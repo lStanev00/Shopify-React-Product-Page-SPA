@@ -17,7 +17,7 @@ export default function ReviewsMain () {
                             <div className={Style.currentReviewsMaxes}>
                                 <div className={Style.currentStarCount}>
                                     <StarsDiv />
-                                    {product.avarageReviewsRate}
+                                    {(product.avarageReviewsRate).toFixed(1)}
                                 </div>
 
                                 <div className={Style.reviewsCount}>Based on {product.reviews.length} reviews</div>
