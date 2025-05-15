@@ -23,13 +23,11 @@ export default function ReviewsMain() {
     } = useContext(ContextVariables);
 
     const [sortBy, setSortBy] = useState("highest");
-    const [pageCount, setPageCount] = useState();
     const [currentPage, setCurrentPage] = useState(undefined);
     const [currentPageIndex, setCurrentPageIndex] = useState(0);
 
     useEffect(() => {
         if (paginatedData) {
-            setPageCount(paginatedData.length);
             setCurrentPageIndex((now) => {return 0})
             setCurrentPage(paginatedData[currentPageIndex]);
         }
