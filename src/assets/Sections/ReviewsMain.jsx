@@ -4,138 +4,141 @@ import Style from "../Styles/ReviewsMain.module.css";
 import { StarsDiv } from "./ProductMain";
 import ReviewBreakdown from "../Components/ReviewBreakdown";
 import { SortDropdown } from "../Components/SortDropdown";
-import {
-  filterHaveMedia,
-  sortOneToFive,
-  fiterUsefullReviews,
-} from "../helpers/sortingReviews.js";
+import { filterHaveMedia, sortOneToFive, fiterUsefullReviews } from "../helpers/sortingReviews.js";
 import { svg } from "../Components/svgs.jsx";
 
 export default function ReviewsMain() {
-  const { product, paginatedData, setPaginatedData, reviews, fetchProduct } =
-    useContext(ContextVariables);
-  const [sortBy, setSortBy] = useState("highest");
-  const [pageCount, setPageCount] = useState();
-  const [currentPage, setCurrentPage] = useState(undefined);
+    const { product, paginatedData, setPaginatedData, reviews, fetchProduct, visitorId } =
+        useContext(ContextVariables);
+    const [sortBy, setSortBy] = useState("highest");
+    const [pageCount, setPageCount] = useState();
+    const [currentPage, setCurrentPage] = useState(undefined);
 
-  useEffect(() => {
-    if (paginatedData) {
-      setPageCount(paginatedData.length);
-      setCurrentPage(paginatedData[0]);
-    }
-  }, [paginatedData]);
+    useEffect(() => {
+        if (paginatedData) {
+            setPageCount(paginatedData.length);
+            setCurrentPage(paginatedData[0]);
+        }
+    }, [paginatedData]);
 
-  useEffect(() => {}, []);
+    useEffect(() => {}, []);
 
-  useEffect(() => {
-    async function sortHighest() {
-      await fetchProduct();
-    }
-    if (sortBy == `highest`) sortHighest();
-    else if (sortBy == `lowest`) setPaginatedData(sortOneToFive(reviews));
-    else if (sortBy == `picture`) setPaginatedData(filterHaveMedia(reviews));
-    else if (sortBy == `helpful`)
-      setPaginatedData(fiterUsefullReviews(reviews));
-  }, sortBy);
+    useEffect(() => {
+        async function sortHighest() {
+            await fetchProduct();
+        }
+        if (sortBy == `highest`) sortHighest();
+        else if (sortBy == `lowest`) setPaginatedData(sortOneToFive(reviews));
+        else if (sortBy == `picture`) setPaginatedData(filterHaveMedia(reviews));
+        else if (sortBy == `helpful`) setPaginatedData(fiterUsefullReviews(reviews));
+    }, sortBy);
 
-  if (paginatedData && currentPage) {
-    return (
-      <>
-        <section className={Style.mainSection}>
-          <p className={Style.headerP}>Customer reviews</p>
+    if (paginatedData && currentPage && visitorId) {
+        return (
+            <>
+                <section className={Style.mainSection}>
+                    <p className={Style.headerP}>Customer reviews</p>
 
-          <div className={Style.reviewsContent}>
-            <div className={Style.contentHeader}>
-              <div className={Style.currentReviewsMaxes}>
-                <div className={Style.currentStarCount}>
-                  <StarsDiv />
-                  {product.avarageReviewsRate.toFixed(1)}
-                </div>
+                    <div className={Style.reviewsContent}>
+                        <div className={Style.contentHeader}>
+                            <div className={Style.currentReviewsMaxes}>
+                                <div className={Style.currentStarCount}>
+                                    <StarsDiv />
+                                    {product.avarageReviewsRate.toFixed(1)}
+                                </div>
 
-                <div className={Style.reviewsCount}>
-                  Based on {reviews.length} reviews
-                </div>
-              </div>
+                                <div className={Style.reviewsCount}>
+                                    Based on {reviews.length} reviews
+                                </div>
+                            </div>
 
-              <div className={Style.reviewBrakedown}>
-                <ReviewBreakdown reviews={reviews} />
-              </div>
+                            <div className={Style.reviewBrakedown}>
+                                <ReviewBreakdown reviews={reviews} />
+                            </div>
 
-              <button className={Style.openReview}>Leave a review</button>
-            </div>
-          </div>
-
-          <SortDropdown
-            className={Style.SortDropdown}
-            value={sortBy}
-            onChange={setSortBy}
-          />
-          <div className={Style.commentsDiv}>
-            {currentPage &&
-              currentPage.map((review) => {
-                return (
-                  <div className={Style.reviewMainWrapper} key={review._id}>
-                    <div className={Style.suberInfo}>
-                      <StarsDiv item={review} />
-                      <span className={Style.suberName}>{review.name}</span>
-                      <span className={Style.reviewDate}>
-                        {formatLocalDateTime(review.createdAt)}
-                      </span>
+                            <button className={Style.openReview}>Leave a review</button>
+                        </div>
                     </div>
 
-                    <div className={Style.reviewInfoWrapper}>
-                      <span className={Style.reviewTitle}>{review.title}</span>
-                      <span className={Style.reviewDescriptin}>
-                        {review.content}
-                      </span>
-                      {review.media.length > 0 && (
-                        <div className={Style.reviewImageWrapper}>
-                          {review.media.map((href) => {
-                            return (
-                              <img
-                                className={Style.reviewImage}
-                                key={href}
-                                src={href}
-                                alt="Reveiw Image"
-                              />
-                            );
-                          })}
-                        </div>
-                      )}
-                      <div className={Style.reviewUserAction}>
-                        <span className={Style.wasThatHelpfull}>
-                          Was this helpful?
-                        </span>
+                    <SortDropdown
+                        className={Style.SortDropdown}
+                        value={sortBy}
+                        onChange={setSortBy}
+                    />
+                    <div className={Style.commentsDiv}>
+                        {currentPage &&
+                            currentPage.map((review) => {
+                                return (
+                                    <div className={Style.reviewMainWrapper} key={review._id}>
+                                        <div className={Style.suberInfo}>
+                                            <StarsDiv item={review} />
+                                            <span className={Style.suberName}>{review.name}</span>
+                                            <span className={Style.reviewDate}>
+                                                {formatLocalDateTime(review.createdAt)}
+                                            </span>
+                                        </div>
 
-                        <div className={Style.likes}>
-                            <svg.Like />
-                        </div>
-                        <div className={Style.dieslikes}>
-                            <svg.Dislike />
-                        </div>
-                      </div>
+                                        <div className={Style.reviewInfoWrapper}>
+                                            <span className={Style.reviewTitle}>
+                                                {review.title}
+                                            </span>
+                                            <span className={Style.reviewDescriptin}>
+                                                {review.content}
+                                            </span>
+                                            {review.media.length > 0 && (
+                                                <div className={Style.reviewImageWrapper}>
+                                                    {review.media.map((href) => {
+                                                        return (
+                                                            <img
+                                                                className={Style.reviewImage}
+                                                                key={href}
+                                                                src={href}
+                                                                alt="Reveiw Image"
+                                                            />
+                                                        );
+                                                    })}
+                                                </div>
+                                            )}
+                                            <div className={Style.reviewUserAction}>
+                                                <span className={Style.wasThatHelpfull}>
+                                                    Was this helpful?
+                                                </span>
+
+                                                {visitorId &&
+                                                    (() => {
+                                                        const exist = review.votes[visitorId];
+                                                        return <>{/* your JSX here */}</>;
+                                                    })()}
+
+                                                <div className={Style.likes}>
+                                                    <svg.Like />
+                                                </div>
+                                                <div className={Style.dieslikes}>
+                                                    <svg.Dislike />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                );
+                            })}
                     </div>
-                  </div>
-                );
-              })}
-          </div>
-        </section>
-      </>
-    );
-  }
+                </section>
+            </>
+        );
+    }
 }
 
 export function formatLocalDateTime(dateInput) {
-  if (!dateInput) return "";
+    if (!dateInput) return "";
 
-  const date = new Date(dateInput);
+    const date = new Date(dateInput);
 
-  let result = date.toLocaleString("bg-BG", {
-    day: "2-digit",
-    month: "2-digit",
-    year: "numeric",
-  });
+    let result = date.toLocaleString("bg-BG", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+    });
 
-  result = result.replaceAll(`.`, `/`).replace(` г/`, ``);
-  return result;
+    result = result.replaceAll(`.`, `/`).replace(` г/`, ``);
+    return result;
 }
