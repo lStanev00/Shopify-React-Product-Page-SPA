@@ -5,6 +5,7 @@ export const ContextVariables = createContext();
 export const ContextProvider = ({children}) => {
     const url = "https://shopify-rest-api-demo-production.up.railway.app";
     const [product, setProduct] = useState(undefined);
+    const [paginatedData, setPaginatedData] = useState(undefined);
 
     async function fetchProduct(productSlug) {
         const endpoint = url + `/product/` + productSlug;
@@ -19,7 +20,7 @@ export const ContextProvider = ({children}) => {
     }
 
     return (
-        <ContextVariables.Provider value={{product, setProduct, fetchProduct}}>
+        <ContextVariables.Provider value={{product, setProduct, fetchProduct,paginatedData, setPaginatedData }}>
             {children}
         </ContextVariables.Provider>
     )
