@@ -1,8 +1,38 @@
 .mainSection {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
+  gap: 60px;
+  width: 100%;
+  height: fit-content;
+  align-items: center;
+}
+
+.headerP {
+  font-family: Montserrat;
+  font-weight: 500;
+  font-size: 31px;
+  line-height: 120%;
+  letter-spacing: 0.8%;
+  text-align: center;
+  width: fit-content;
+  height: fit-content;
+  margin-top: 0;
+}
+
+.reviewsContent {
     display: flex;
     flex-direction: column;
-    padding-bottom: 10px;
-    gap: 60px;
+    width: fit-content;
+    height: fit-content;
+    gap: 40px;
+    padding: 0;
+}
+
+.contentHeader{
     width: 100%;
     height: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
