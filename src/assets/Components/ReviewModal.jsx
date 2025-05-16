@@ -28,7 +28,8 @@ export default function ReviewModal() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!name || !email || !content || stars === 0) {
+
+        if (!name || !email || stars === 0) {
             showError("Please fill in all required fields.");
             return;
         }
