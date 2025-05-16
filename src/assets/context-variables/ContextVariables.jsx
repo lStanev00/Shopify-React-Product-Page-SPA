@@ -31,12 +31,12 @@ export const ContextProvider = ({children}) => {
             const data = await res.json();
             if(data.reviews && data.reviews.length > 0){
                 const avarageReviewsRate = (data.reviews.reduce((sum, v) => sum + (v.rating || 0), 0)) / data.reviews.length;
-                data.avarageReviewsRate = avarageReviewsRate.toFixed(2) ?? 0;
+                data.avarageReviewsRate = avarageReviewsRate;
                 setReviews(data.reviews);
-                setAvarageReveiwsRate(avarageReviewsRate.toFixed(2) ?? 0);
+                setAvarageReveiwsRate(avarageReviewsRate);
             } else {
                 data.avarageReviewsRate = 0;
-                setAvarageReveiwsRate(data.avarageReviewsRate.toFixed(2) ?? 0);
+                setAvarageReveiwsRate(data.avarageReviewsRate);
             }
             setProduct(data);
             return data
