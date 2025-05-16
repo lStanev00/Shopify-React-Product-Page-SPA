@@ -108,6 +108,11 @@
     cursor: pointer;
 }
 
+.submitButton:disabled {
+    background-color: #4c5c6b;
+    cursor:not-allowed;
+}
+
 .images {
     display: flex;
     flex-direction: row;

@@ -13,6 +13,8 @@ export default function ReviewModal() {
     const [content, setContent] = useState("");
     const [imageFiles, setImageFiles] = useState([]);
     const [imagePreviews, setImagePreviews] = useState([]);
+    const [adding, setAdding] = useState(false);
+    
 
     const showError = (msg) => {
         setErrorMessage(msg);
@@ -27,11 +29,13 @@ export default function ReviewModal() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setAdding(true);
+
 
 
         if (!name || !email || stars === 0) {
             showError("Please fill in all required fields.");
-            return;
+            return setAdding(false);
         }
 
         const formData = new FormData();
@@ -66,6 +70,7 @@ export default function ReviewModal() {
         } catch (err) {
             showError("Could not submit review.");
         }
+        setAdding(false)
     };
 
     return (
@@ -164,7 +169,7 @@ export default function ReviewModal() {
                         ))}
                     </div>
 
-                    <button type="submit" className={Style.submitButton}>
+                    <button type="submit" disabled={adding} className={Style.submitButton}>
                         Submit review
                     </button>
                 </form>
