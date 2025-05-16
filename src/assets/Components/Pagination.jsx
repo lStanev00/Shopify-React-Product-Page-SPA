@@ -7,11 +7,11 @@ export default function Pagination({ currentPage, paginatedData, setCurrentPageI
                 <button
                     key={page}
                     className={Style[page === currentPage ? "pageBtn_active" : "pageBtn"]}
-                    onClick={() => onPageChange(page)}>
+                    onClick={() => setCurrentPageIndex(i)}>
                     {i + 1}
                 </button>
             ))}
-            <button disabled={currentPageIndex == paginatedData?.length - 1} className={Style.arrowBtn} onClick={() => setCurrentPageIndex(currentPageIndex + 1)}>
+            <button disabled={currentPageIndex == paginatedData?.length - 1} className={Style.arrowBtn} onClick={() => setCurrentPageIndex((now) => Number(now) + 1)}>
                 <svg
                     width="18"
                     height="13"

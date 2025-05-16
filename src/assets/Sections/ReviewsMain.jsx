@@ -29,11 +29,11 @@ export default function ReviewsMain() {
     const [currentPageIndex, setCurrentPageIndex] = useState(0);
 
     useEffect(() => {
-        if (paginatedData) {
+        if (paginatedData && currentPageIndex) {
             setCurrentPageIndex((now) => {return 0})
             setCurrentPage(paginatedData[currentPageIndex]);
         }
-    }, [paginatedData]);
+    }, []);
 
     useEffect(() => {
         if (product){
@@ -45,7 +45,7 @@ export default function ReviewsMain() {
         }
     }, [product])
 
-    useEffect(() => {if(paginatedData){setCurrentPage(paginatedData[currentPageIndex])}}, [currentPageIndex]);
+    useEffect(() => {if(paginatedData){setCurrentPage(paginatedData[currentPageIndex]); console.log(paginatedData) }}, [currentPageIndex]);
 
     useEffect(() => {
         if (!reviews) return
