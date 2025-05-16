@@ -45,8 +45,8 @@ export default function ReviewsMain() {
         if (reviews) {
             const newContent = paginateReviews(reviews);
             setPaginatedData(newContent);
-            setCurrentPageIndex((now) => {return 0})
-            setCurrentPage(newContent[currentPageIndex]);
+            setCurrentPageIndex(0)
+            setCurrentPage(newContent[0]);
         }
     }, [reviews]);
 
@@ -163,7 +163,7 @@ useEffect(() => {
                                     );
                                 })}
                             </div>
-                            <Pagination paginatedData={paginatedData} setCurrentPageIndex={setCurrentPageIndex} currentPage={currentPage} />
+                            <Pagination paginatedData={paginatedData} currentPageIndex={currentPageIndex} setCurrentPageIndex={setCurrentPageIndex} currentPage={currentPage} />
                         </>
                     )}
                 </section>

@@ -8,6 +8,7 @@ export default function Pagination({ currentPage, paginatedData, setCurrentPageI
             setPage(currentPageIndex + 1 );
         }
     }, [currentPageIndex])
+    console.log(currentPageIndex)
 
     return (
         <div className={Style.paginationContainer}>
@@ -15,14 +16,14 @@ export default function Pagination({ currentPage, paginatedData, setCurrentPageI
                 <button
                     key={page}
                     className={Style[page === currentPage ? "pageBtn_active" : "pageBtn"]}
-                    onClick={() => setCurrentPageIndex(i)}>
+                    onClick={() => setCurrentPageIndex(Number(i))}>
                     {i + 1}
                 </button>
             ))}
-                {page < paginatedData.length - 1 && (
+                {page < Number(paginatedData.length)  && (
                     <>
                         <button
-                            disabled={currentPageIndex >= paginatedData.length - 1}
+                            
                             className={Style.arrowBtn}
                             onClick={() => setCurrentPageIndex((now) => now + 1)}
                         >
