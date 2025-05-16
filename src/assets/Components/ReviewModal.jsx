@@ -92,7 +92,7 @@ export default function ReviewModal() {
                     </div>
 
                     <div className={Style.formGroup}>
-                        <label>E-mail</label>
+                        <label>E-mail<span className={Style.required}>*</span></label>
                         <input
                             onChange={(e) => setEmail(e.target.value)}
                             type="email"
@@ -102,7 +102,7 @@ export default function ReviewModal() {
                     </div>
 
                     <div className={Style.formGroup}>
-                        <label>Rating</label>
+                        <label>Rating<span className={Style.required}>*</span></label>
                         <div className={Style.stars}>
                             {[...Array(stars)].map((_, index) => (
                                 <div
