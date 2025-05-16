@@ -12,13 +12,13 @@ export const ContextProvider = ({children}) => {
     const [paginatedData, setPaginatedData] = useState(undefined);
     const [modalTrigger, setTrigger] = useState(false);
 
-    useEffect(() => {
-        if (product && product.reviews && product.reviews.length > 0){
-            setReviews(product.reviews);
-            setPaginatedData(paginateReviews(product.reviews))
-        }
+    // useEffect(() => {
+    //     if (product && product.reviews && product.reviews.length > 0){
+    //         setReviews(product.reviews);
+    //         setPaginatedData(paginateReviews(product.reviews))
+    //     }
 
-    },[product])
+    // },[product])
 
     async function fetchProduct() {
       const productSlug = window.location.pathname.replace("/products/", ``);
@@ -42,7 +42,7 @@ export const ContextProvider = ({children}) => {
     }
 
     return (
-        <ContextVariables.Provider value={{product, setProduct, reviews, fetchProduct, paginatedData, setPaginatedData, visitorId, setVisitorId, url, modalTrigger, setTrigger }}>
+        <ContextVariables.Provider value={{setReviews ,product, setProduct, reviews, fetchProduct, paginatedData, setPaginatedData, visitorId, setVisitorId, url, modalTrigger, setTrigger }}>
             {children}
         </ContextVariables.Provider>
     )

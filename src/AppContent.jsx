@@ -8,13 +8,15 @@ import ReviewsMain from "./assets/Sections/ReviewsMain.jsx";
 import ReviewModal from "./assets/Components/ReviewModal.jsx";
 
 export default function AppContent() {
-  const { product, fetchProduct, setPaginatedData, setVisitorId, modalTrigger } = useContext(ContextVariables);
+  const { product, fetchProduct, setPaginatedData, setVisitorId, modalTrigger ,setReviews } = useContext(ContextVariables);
 
   useEffect(() => {
     async function loadProduct() {
       const data = await fetchProduct();
+      setReviews(data?.reviews);
+      setPaginatedData(paginateReviews(data?.reviews))
                 
-      if (data.reviews && data.reviews.length > 0) setPaginatedData(paginateReviews(data.reviews))
+      // if (data.reviews && data.reviews.length > 0) setPaginatedData(paginateReviews(data.reviews))
       const visitorId = await getVisitorId();
       setVisitorId(visitorId);
     }

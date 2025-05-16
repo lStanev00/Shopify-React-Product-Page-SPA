@@ -11,6 +11,7 @@ import {
 } from "../helpers/sortingReviews.js";
 import { RenderVotes } from "../Components/RenderVotes.jsx";
 import Pagination from "../Components/Pagination.jsx";
+import { paginateReviews } from "../helpers/paginateReviews.js";
 
 export default function ReviewsMain() {
     const {
@@ -19,6 +20,7 @@ export default function ReviewsMain() {
         paginatedData,
         setPaginatedData,
         reviews,
+        setReviews,
         fetchProduct,
         visitorId,
         setTrigger
@@ -27,14 +29,7 @@ export default function ReviewsMain() {
     const [sortBy, setSortBy] = useState("highest");
     const [currentPage, setCurrentPage] = useState(undefined);
     const [currentPageIndex, setCurrentPageIndex] = useState(0);
-
-    useEffect(() => {
-        if (paginatedData && currentPageIndex) {
-            setCurrentPageIndex((now) => {return 0})
-            setCurrentPage(paginatedData[currentPageIndex]);
-        }
-    }, []);
-
+    
     useEffect(() => {
         if (product){
             if(!product.avarageReviewsRate) {
@@ -45,23 +40,53 @@ export default function ReviewsMain() {
         }
     }, [product])
 
-    useEffect(() => {if(paginatedData){setCurrentPage(paginatedData[currentPageIndex]); console.log(paginatedData) }}, [currentPageIndex]);
+    useEffect(() => {
+
+        if (reviews) {
+            const newContent = paginateReviews(reviews);
+            setPaginatedData(newContent);
+            setCurrentPageIndex((now) => {return 0})
+            setCurrentPage(newContent[currentPageIndex]);
+        }
+    }, [reviews]);
+
 
     useEffect(() => {
-        if (!reviews) return
-        async function sortHighest() {
-            await fetchProduct();
+        if(paginatedData){
+            setCurrentPage(paginatedData[currentPageIndex])
         }
-        if (sortBy === "highest") sortHighest();
-        else if (sortBy === "lowest") setPaginatedData(sortOneToFive(reviews));
-        else if (sortBy === "picture") {
+    }, [currentPageIndex]);
 
-            setPaginatedData(filterHaveMedia(reviews))
+useEffect(() => {
+    if (!reviews) return;
+
+    async function applySort() {
+        let data = reviews;
+
+        if (sortBy === "highest") {
+            const updated = await fetchProduct(); 
+            data = updated?.reviews ?? [];
+            setPaginatedData(paginateReviews(data));
+        } else if (sortBy === "lowest") {
+            console.log("lowest");
+            setPaginatedData(sortOneToFive(data));
+        } else if (sortBy === "picture") {
+            console.log("picture");
+            setPaginatedData(filterHaveMedia(data));
+        } else if (sortBy === "helpful") {
+            console.log("helpful");
+            setPaginatedData(fiterUsefullReviews(data));
         }
-        else if (sortBy === "helpful") setPaginatedData(fiterUsefullReviews(reviews));
-    }, [sortBy]);
 
-    if ( visitorId) {
+        setCurrentPageIndex(0);
+        setCurrentPage(paginatedData?.[0] ?? undefined);
+    }
+
+    applySort();
+}, [sortBy]);
+
+
+    if ( paginatedData && visitorId) {
         return (
             <>
                 <section className={Style.mainSection}>
