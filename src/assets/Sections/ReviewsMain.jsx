@@ -23,22 +23,14 @@ export default function ReviewsMain() {
         setReviews,
         fetchProduct,
         visitorId,
-        setTrigger
+        setTrigger,
+        modalTrigger,
+        avarageReviewsRate
     } = useContext(ContextVariables);
 
     const [sortBy, setSortBy] = useState("highest");
     const [currentPage, setCurrentPage] = useState(undefined);
     const [currentPageIndex, setCurrentPageIndex] = useState(0);
-    
-    useEffect(() => {
-        if (product){
-            if(!product.avarageReviewsRate) {
-                let mock = product;
-                mock.avarageReviewsRate = 0;
-                setProduct(mock);
-            }
-        }
-    }, [product])
 
     useEffect(() => {
 
@@ -97,7 +89,7 @@ useEffect(() => {
                             <div className={Style.currentReviewsMaxes}>
                                 <div className={Style.currentStarCount}>
                                     <StarsDiv />
-                                    {product.avarageReviewsRate.toFixed(1) ?? 0}
+                                    {avarageReviewsRate.toFixed(1) ?? 0}
                                 </div>
 
                                 <div className={Style.reviewsCount}>

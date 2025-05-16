@@ -4,20 +4,20 @@ import Style from "../Styles/ProductMain.module.css";
 import { svg } from "../Components/svgs";
 
 export default function ProductMain() {
-  const { product, reviews } = useContext(ContextVariables);
+  const { product, reviews, avarageReviewsRate } = useContext(ContextVariables);
   const [mainImage, setMainImage] = useState(product?.media[0]);
   const [imageList, setImageList] = useState(undefined);
   const [rating, setRating] = useState(0);
-  const [reviewsCount, Reviews] = useState(0);
+  const [reviewsCount, setReviewsCount] = useState(0);
 
   useEffect(() => {
     if (product) setImageList(product?.media);
-    if(product && product.avarageReviewsRate) {
+    if(product && avarageReviewsRate) {
 
-      setRating((product.avarageReviewsRate).toFixed(1))
+      setRating(avarageReviewsRate ?? 0)
     }
     if(reviews){
-      Reviews(reviews.length ?? 0);
+      setReviewsCount(reviews.length ?? 0);
     }
   }, [product]);
 
