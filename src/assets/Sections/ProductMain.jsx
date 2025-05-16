@@ -73,7 +73,7 @@ export default function ProductMain() {
             </div>
 
             <button
-              id="#ProductSubmitButton-template--24968587608408__main"
+              id="openCartMenuBtn"
               style={{marginTop: "20px"}}
               className={Style.addToCartButton}
             >
