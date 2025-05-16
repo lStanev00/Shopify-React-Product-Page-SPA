@@ -11,6 +11,7 @@ export const ContextProvider = ({children}) => {
     const [visitorId, setVisitorId] = useState(undefined);
     const [paginatedData, setPaginatedData] = useState(undefined);
     const [modalTrigger, setTrigger] = useState(false);
+    const [avarageReviewsRate, setAvarageReveiwsRate] = useState(undefined);
 
     // useEffect(() => {
     //     if (product && product.reviews && product.reviews.length > 0){
@@ -32,8 +33,10 @@ export const ContextProvider = ({children}) => {
                 const avarageReviewsRate = (data.reviews.reduce((sum, v) => sum + (v.rating || 0), 0)) / data.reviews.length;
                 data.avarageReviewsRate = avarageReviewsRate;
                 setReviews(data.reviews);
+                setAvarageReveiwsRate(avarageReviewsRate);
             } else {
                 data.avarageReviewsRate = 0;
+                setAvarageReveiwsRate(data.avarageReviewsRate);
             }
             setProduct(data);
             return data
@@ -42,7 +45,7 @@ export const ContextProvider = ({children}) => {
     }
 
     return (
-        <ContextVariables.Provider value={{setReviews ,product, setProduct, reviews, fetchProduct, paginatedData, setPaginatedData, visitorId, setVisitorId, url, modalTrigger, setTrigger }}>
+        <ContextVariables.Provider value={{avarageReviewsRate, setAvarageReveiwsRate, setReviews ,product, setProduct, reviews, fetchProduct, paginatedData, setPaginatedData, visitorId, setVisitorId, url, modalTrigger, setTrigger }}>
             {children}
         </ContextVariables.Provider>
     )
