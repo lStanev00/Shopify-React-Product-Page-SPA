@@ -58,10 +58,10 @@ export default function ReviewModal() {
             const data = await res.json();
             console.log("Review submitted:", data);
             
-            const newData = await fetchProduct();
-            if (newData.reviews) {
-                setReviews(newData.reviews);
-            }
+            // const newData = await fetchProduct();
+            // if (newData.reviews) {
+            //     setReviews(newData.reviews);
+            // }
             setTrigger(false);
         } catch (err) {
             showError("Could not submit review.");

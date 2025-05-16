@@ -34,13 +34,19 @@ export default function ReviewsMain() {
 
     useEffect(() => {
 
-        if (reviews) {
-            const newContent = paginateReviews(reviews);
-            setPaginatedData(newContent);
-            setCurrentPageIndex(0)
-            setCurrentPage(newContent[0]);
+        async function loadReiviews() {
+            if (reviews && modalTrigger == false) {
+                const newData = await fetchProduct();
+                const newContent = paginateReviews(newData?.reviews ?? null);
+                setPaginatedData(newContent);
+                setCurrentPageIndex(0)
+                setCurrentPage(newContent[0]);
+            }
+            
         }
-    }, [reviews]);
+        loadReiviews()
+
+    }, [modalTrigger]);
 
 
     useEffect(() => {
