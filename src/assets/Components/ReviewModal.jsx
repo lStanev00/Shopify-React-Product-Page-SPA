@@ -13,7 +13,6 @@ export default function ReviewModal() {
     const [content, setContent] = useState("");
     const [imageFiles, setImageFiles] = useState([]);
     const [imagePreviews, setImagePreviews] = useState([]);
-    console.log(product)
 
     const showError = (msg) => {
         setErrorMessage(msg);
