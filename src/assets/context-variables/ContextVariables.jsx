@@ -13,6 +13,7 @@ export const ContextProvider = ({children}) => {
     const [modalTrigger, setTrigger] = useState(false);
     const [avarageReviewsRate, setAvarageReveiwsRate] = useState(undefined);
 
+
     // useEffect(() => {
     //     if (product && product.reviews && product.reviews.length > 0){
     //         setReviews(product.reviews);
@@ -45,7 +46,7 @@ export const ContextProvider = ({children}) => {
     }
 
     return (
-        <ContextVariables.Provider value={{avarageReviewsRate, setAvarageReveiwsRate, setReviews ,product, setProduct, reviews, fetchProduct, paginatedData, setPaginatedData, visitorId, setVisitorId, url, modalTrigger, setTrigger }}>
+        <ContextVariables.Provider value={{ avarageReviewsRate, setAvarageReveiwsRate, setReviews ,product, setProduct, reviews, fetchProduct, paginatedData, setPaginatedData, visitorId, setVisitorId, url, modalTrigger, setTrigger }}>
             {children}
         </ContextVariables.Provider>
     )

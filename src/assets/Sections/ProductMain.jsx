@@ -74,7 +74,7 @@ export default function ProductMain() {
 
             <button
               id="openCartMenuBtn"
-              data-variantId={product?.variantId}
+              data-variantid={product?.variantId}
               style={{marginTop: "20px"}}
               className={Style.addToCartButton}
             >

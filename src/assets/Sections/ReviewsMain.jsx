@@ -4,31 +4,22 @@ import Style from "../Styles/ReviewsMain.module.css";
 import { StarsDiv } from "./ProductMain";
 import ReviewBreakdown from "../Components/ReviewBreakdown";
 import { SortDropdown } from "../Components/SortDropdown";
-import {
-    filterHaveMedia,
-    sortOneToFive,
-    fiterUsefullReviews
-} from "../helpers/sortingReviews.js";
 import { RenderVotes } from "../Components/RenderVotes.jsx";
 import Pagination from "../Components/Pagination.jsx";
 import { paginateReviews } from "../helpers/paginateReviews.js";
 
 export default function ReviewsMain() {
     const {
-        product,
-        setProduct,
         paginatedData,
         setPaginatedData,
         reviews,
-        setReviews,
         fetchProduct,
         visitorId,
         setTrigger,
         modalTrigger,
-        avarageReviewsRate
+        avarageReviewsRate,
     } = useContext(ContextVariables);
 
-    const [sortBy, setSortBy] = useState("highest");
     const [currentPage, setCurrentPage] = useState(undefined);
     const [currentPageIndex, setCurrentPageIndex] = useState(0);
 
@@ -54,34 +45,6 @@ export default function ReviewsMain() {
             setCurrentPage(paginatedData[currentPageIndex])
         }
     }, [currentPageIndex]);
-
-useEffect(() => {
-    if (!reviews) return;
-
-    async function applySort() {
-        let data = reviews;
-
-        if (sortBy === "highest") {
-            const updated = await fetchProduct(); 
-            data = updated?.reviews ?? [];
-            setPaginatedData(paginateReviews(data));
-        } else if (sortBy === "lowest") {
-            console.log("lowest");
-            setPaginatedData(sortOneToFive(data));
-        } else if (sortBy === "picture") {
-            console.log("picture");
-            setPaginatedData(filterHaveMedia(data));
-        } else if (sortBy === "helpful") {
-            console.log("helpful");
-            setPaginatedData(fiterUsefullReviews(data));
-        }
-
-        setCurrentPageIndex(0);
-        setCurrentPage(paginatedData?.[0] ?? undefined);
-    }
-
-    applySort();
-}, [sortBy]);
 
 
     if ( paginatedData && visitorId) {
@@ -111,11 +74,7 @@ useEffect(() => {
                         </div>
                     </div>
 
-                    <SortDropdown
-                        className={Style.SortDropdown}
-                        value={sortBy}
-                        onChange={setSortBy}
-                    />
+                    <SortDropdown setCurrentPage={setCurrentPage} setCurrentPageIndex={setCurrentPageIndex}/>
 
                     {currentPage && paginatedData && (
                         <>
