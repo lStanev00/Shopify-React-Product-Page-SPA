@@ -66,7 +66,7 @@ export default function ProductMain() {
               <div className={Style.contentReviews}>
                 <StarsDiv />
                 <div className={Style.reviewCounts}>
-                  {rating} ( {reviewsCount} reviews )
+                  {rating.toFixed(1)} ( {reviewsCount} reviews )
                 </div>
               </div>
               <p className={Style.productDescription}>{product.description}</p>
