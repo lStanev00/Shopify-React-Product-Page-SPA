@@ -1,18 +1,10 @@
 import { useEffect, useState } from "react";
 import Style from "../Styles/Pagination.module.css";
 export default function Pagination({ currentPage, paginatedData, setCurrentPageIndex, currentPageIndex }) {
-    const [page, setPage] = useState(currentPageIndex + 1);
-
-    useEffect(() => {
-        if (paginatedData && currentPageIndex) {
-            setPage(currentPageIndex + 1 );
-        }
-    }, [currentPageIndex])
-    console.log(currentPageIndex)
 
             return (
                 <div className={Style.paginationContainer}>
-                {page > 1  && (
+                {currentPageIndex > 0  && (
                     <>
 
                         <button
@@ -42,7 +34,7 @@ export default function Pagination({ currentPage, paginatedData, setCurrentPageI
                     {i + 1}
                 </button>
             ))}
-                {page < Number(paginatedData.length)  && (
+                {currentPageIndex < (Number(paginatedData.length)- 1)  && (
                     <>
                         <button
                             
