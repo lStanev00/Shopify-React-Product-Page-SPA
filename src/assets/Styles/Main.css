@@ -41,7 +41,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 999;                         
+    z-index: 99999999;                         
 }
 
 @media (max-width: 1300px) {
@@ -61,5 +61,11 @@
     position: relative;
     top: 0;
     left: 0;
+  }
+
+  .backdrop {
+    align-items: flex-start;
+    justify-content: flex-start;
+    overflow-y: auto;
   }
 }

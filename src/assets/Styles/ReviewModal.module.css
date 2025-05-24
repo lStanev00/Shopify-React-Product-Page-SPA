@@ -153,3 +153,37 @@
     top: 20px;
     opacity: 1;
 }
+
+
+@media (max-width: 1300px) {
+    .reviewModal {
+        position: relative;
+        width: 85%;
+        height: auto;
+        max-height: 90svh;
+        overflow-y: auto;
+        margin-top: 5svh;
+        margin-bottom: 5svh;
+        padding-left: 5vw;
+        padding-right: 5vw;
+        padding-top: 2svh;
+        padding-bottom: 2svh;
+        transform: none;
+        top: unset;
+        left: unset;
+        gap: 1svmin;
+    }
+
+    .modalTitle {
+        margin: unset;
+    }
+
+    .reviewForm {
+        gap: 3svmin;
+    }
+
+    .images {
+        width: 100%;
+    }
+
+}
