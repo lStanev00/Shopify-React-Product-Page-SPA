@@ -136,7 +136,7 @@
   background-color: #973019;
 }
 
-@media (max-width: 450px) {
+@media (max-width: 1300px) {
   .productMain {
     max-width: 100%;
     display: grid;
