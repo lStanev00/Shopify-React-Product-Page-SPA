@@ -145,7 +145,7 @@
     grid-template-areas: none;
     gap: 0px 0px;
     width: 100%;
-    margin-top: 60px;
+    margin-top: 10px;
     justify-items: center;
   }
   .mainImage img {
