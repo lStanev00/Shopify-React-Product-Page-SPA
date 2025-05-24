@@ -53,5 +53,12 @@
   .container {
     width: 100%;
     flex-wrap: wrap;
+    gap: 5vh;
+  }
+
+  .SortDropdown {
+    position: relative;
+    top: 0;
+    left: 0;
   }
 }

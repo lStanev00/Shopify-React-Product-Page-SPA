@@ -232,3 +232,28 @@
     justify-content: center;
     text-align: center;
 }
+
+@media (max-width: 1300px) {
+    .mainSection {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 5vh;
+    }
+    .contentHeader {
+        flex-direction: column;
+        gap: 9px;
+    }
+    .reviewsCount {
+        text-align: center;
+        justify-content: center;
+    }
+    .currentReviewsMaxes {
+        gap: 1vh;
+    }
+    .openReview {
+        margin-top: 9px;
+    }
+    .headerP {
+        margin: 0;
+    }
+}
