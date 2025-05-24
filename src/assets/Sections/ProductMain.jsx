@@ -35,7 +35,7 @@ export default function ProductMain() {
           <div className={Style.imagesDiv}>
             <div className={Style.mainImage}>
               <img
-                className={Style.mainImage}
+                  // className={Style.mainImage}
                 src={mainImage}
                 alt={product.title}
               />
