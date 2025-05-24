@@ -256,4 +256,30 @@
     .headerP {
         margin: 0;
     }
+    .commentsDiv {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    .reviewMainWrapper {
+        width: 95vw;
+        flex-wrap: wrap;
+        gap: 1vw;
+        flex-direction: column;
+        padding-left: 5vw;
+    }
+    .reviewInfoWrapper{
+        width: 90vw;
+        flex-wrap: wrap;
+        align-items: center;
+        flex-direction: row;
+    }
+    .reviewUserAction {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 5vw;
+        
+    }
+    .reviewDescriptin {
+        width: 95%;
+    }
 }

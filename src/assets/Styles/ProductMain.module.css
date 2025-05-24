@@ -82,6 +82,7 @@
   width: 100%;
   height: fit-content;
   gap: 10px;
+  align-items: center;
 }
 
 .contentReviews {
@@ -139,17 +140,20 @@
 @media (max-width: 1300px) {
   .productMain {
     max-width: 100%;
-    display: grid;
-    grid-template-rows: auto auto;
-    grid-template-columns: max-content;
-    grid-template-areas: none;
-    gap: 0px 0px;
     width: 100%;
     margin-top: 10px;
-    justify-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .mainImage {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
   }
   .mainImage img {
-    max-width: 90vw;
+    max-width: 100%;
   }
 
   .listedImage {
@@ -162,18 +166,10 @@
     gap: 9px;
   }
 
-  .productContent div {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-
   .contentHeader {
     text-align: center;
-  }
-
-  .productDescription {
-    text-align: center;
+    display: flex;
+    align-items: center;
   }
 
   .addToCartButton {
@@ -184,11 +180,14 @@
   .productDescription {
     flex-wrap: wrap;
     width: 85%;
+    text-align: center;
+  }
+  .imagesDiv {
+    width: 90%;
   }
 
-  .productDescriptionContent {
-
-    width: 100vw;
+  .mainImage {
+    width: 90%;
   }
 
 }
