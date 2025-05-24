@@ -47,6 +47,11 @@
 @media (max-width: 450px) {
   #pdp-review-widget {
     max-width: 100vw;
-     background: lime !important;
+    flex-wrap: wrap;
+  }
+
+  .container {
+    width: 100%;
+    flex-wrap: wrap;
   }
 }

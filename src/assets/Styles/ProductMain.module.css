@@ -140,14 +140,15 @@
   .productMain {
     max-width: 100%;
     display: grid;
-    grid-template-rows: 50% 50%;
+    grid-template-rows: auto auto;
     grid-template-columns: max-content;
+    grid-template-areas: none;
     gap: 0px 0px;
     width: 100%;
     margin-top: 60px;
     justify-items: center;
   }
-  .mainImage {
+  .mainImage img {
     max-width: 90vw;
   }
 
@@ -155,5 +156,39 @@
     display: none;
   }
 
+  .productContent {
+    width: 100%;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .productContent div {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .contentHeader {
+    text-align: center;
+  }
+
+  .productDescription {
+    text-align: center;
+  }
+
+  .addToCartButton {
+    width: 50%;
+    font-size: 19px;
+  }
+
+  .productDescription {
+    flex-wrap: wrap;
+    width: 85%;
+  }
+
+  .productDescriptionContent {
+
+    width: 100vw;
+  }
 
 }
