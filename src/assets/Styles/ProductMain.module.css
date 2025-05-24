@@ -135,3 +135,25 @@
 .openReview:active {
   background-color: #973019;
 }
+
+@media (max-width: 450px) {
+  .productMain {
+    max-width: 100%;
+    display: grid;
+    grid-template-rows: 50% 50%;
+    grid-template-columns: max-content;
+    gap: 0px 0px;
+    width: 100%;
+    margin-top: 60px;
+    justify-items: center;
+  }
+  .mainImage {
+    max-width: 90vw;
+  }
+
+  .listedImage {
+    display: none;
+  }
+
+
+}

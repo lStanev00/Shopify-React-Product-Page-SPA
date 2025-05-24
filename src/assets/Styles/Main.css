@@ -43,3 +43,10 @@
     justify-content: center;
     z-index: 999;                         
 }
+
+@media (max-width: 450px) {
+  #pdp-review-widget {
+    max-width: 100vw;
+     background: lime !important;
+  }
+}
