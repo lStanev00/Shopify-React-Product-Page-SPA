@@ -11,6 +11,21 @@
     flex-direction: column;
     gap: 24px;
     font-family: "Montserrat", sans-serif;
+    position: relative;
+    width: 85%;
+    height: auto;
+    max-height: 90svh;
+    overflow-y: auto;
+    margin-top: 5svh;
+    margin-bottom: 5svh;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    padding-top: 2svh;
+    padding-bottom: 2svh;
+    transform: none;
+    top: unset;
+    left: unset;
+    gap: 1svmin;
 }
 
 .closeButton {
